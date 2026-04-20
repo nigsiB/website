@@ -46,7 +46,7 @@ export function ProjectCard({ project, screenshotPath }: ProjectCardProps) {
       </div>
       <div className="space-y-3 border-t border-white/35 p-5">
         <p className="text-[10px] tracking-[0.3em] text-white/70">{project.category.toUpperCase()}</p>
-        <h3 className="text-2xl">{project.title}</h3>
+        <h3 className="text-2xl text-white">{project.title}</h3>
         <p className="text-xs leading-relaxed text-white/75">{project.description}</p>
         <a
           href={project.url}
