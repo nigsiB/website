@@ -34,6 +34,18 @@ h3 {
   line-height: 1.02;
 }
 
+.display-hero {
+  font-size: clamp(2.2rem, 8.2vw, 5.5rem);
+  line-height: 0.98;
+  overflow-wrap: anywhere;
+}
+
+.display-title {
+  font-size: clamp(2rem, 7vw, 4.5rem);
+  line-height: 1;
+  overflow-wrap: anywhere;
+}
+
 a {
   color: inherit;
 }

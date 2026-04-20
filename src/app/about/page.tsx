@@ -61,7 +61,7 @@ export default function AboutPage() {
     <main className="px-6 py-14 md:px-12 md:py-20">
       <div className="mx-auto w-full max-w-6xl">
         <p className="text-xs tracking-[0.3em] text-white/70">ABOUT</p>
-        <h1 className="mt-3 max-w-4xl text-5xl leading-[0.98] md:text-7xl">Award-winning multidisciplinary designer with almost 30 years of delivery.</h1>
+        <h1 className="mt-3 max-w-4xl display-title">Award-winning multidisciplinary designer with almost 30 years of delivery.</h1>
         <p className="mt-6 max-w-4xl text-sm leading-relaxed text-white/80">
           A UK-born and UK-based creative working across digital, brand, print and experiential systems. I build work that is
           concept-led, commercially focused and consistent across every touchpoint, from websites and campaigns to large-format

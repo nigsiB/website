@@ -8,7 +8,7 @@ export default function WorkIndexPage() {
     <main className="px-6 py-14 md:px-12 md:py-20">
       <div className="mx-auto w-full max-w-6xl">
         <p className="text-xs tracking-[0.3em] text-white/70">WORK</p>
-        <h1 className="mt-3 text-5xl md:text-7xl">Portfolio Archive</h1>
+        <h1 className="mt-3 display-title">Portfolio Archive</h1>
         <p className="mt-5 max-w-3xl text-sm leading-relaxed text-white/80">
           Browse work by discipline. Sections combine live project captures with curated visuals and concise case-study summaries.
         </p>

@@ -2,7 +2,7 @@ export default function ContactPage() {
   return (
     <main className="invert-panel px-6 py-14 md:px-12 md:py-20">
       <div className="mx-auto w-full max-w-6xl">
-        <h1 className="text-5xl md:text-6xl">CONTACT</h1>
+        <h1 className="display-title">CONTACT</h1>
         <p className="mt-4 max-w-2xl text-sm text-black/80">
           Available for selected freelance and long-term projects. Share a brief and I will get back to you.
         </p>
