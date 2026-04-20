@@ -47,7 +47,7 @@ export function PdfImageLightbox({ src, alt, sizes }: PdfImageLightboxProps) {
           <button
             type="button"
             onClick={() => setOpen(false)}
-            className="absolute right-4 top-4 border border-white/70 px-3 py-1 text-xs tracking-[0.2em] text-white hover:bg-white hover:text-black md:right-8 md:top-8"
+            className="absolute right-4 top-4 z-20 border border-white/70 bg-black/55 px-3 py-1 text-xs tracking-[0.2em] text-white hover:bg-white hover:text-black md:right-8 md:top-8"
             aria-label="Close fullscreen image"
           >
             CLOSE

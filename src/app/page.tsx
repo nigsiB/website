@@ -25,6 +25,14 @@ export default function Home() {
           <div className="mt-8">
             <ProjectGrid latestOnly limit={4} compact />
           </div>
+          <div className="mt-8 flex justify-center md:justify-start">
+            <Link
+              href="/work"
+              className="inline-flex min-w-[10rem] items-center justify-center border border-black px-4 py-2 text-xs tracking-[0.2em] text-black transition-colors hover:bg-black hover:text-white"
+            >
+              VIEW MORE
+            </Link>
+          </div>
         </div>
       </section>
 
