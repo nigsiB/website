@@ -8,9 +8,10 @@ import type { PortfolioProject } from "@/data/projects";
 type ProjectCardProps = {
   project: PortfolioProject;
   screenshotPath: string;
+  compact?: boolean;
 };
 
-export function ProjectCard({ project, screenshotPath }: ProjectCardProps) {
+export function ProjectCard({ project, screenshotPath, compact = false }: ProjectCardProps) {
   const placeholderSrc = useMemo(() => {
     const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='1440' height='900' viewBox='0 0 1440 900'>
       <rect width='1440' height='900' fill='black'/>
@@ -27,10 +28,13 @@ export function ProjectCard({ project, screenshotPath }: ProjectCardProps) {
       : project.device === "tablet"
         ? "device-frame device-tablet"
         : "device-frame device-desktop";
+  const mediaClass = compact ? "relative flex min-h-[180px] items-center justify-center overflow-hidden p-3" : "relative flex min-h-[300px] items-center justify-center overflow-hidden p-4 sm:p-8";
+  const bodyClass = compact ? "space-y-2 border-t border-white/35 p-3" : "space-y-3 border-t border-white/35 p-5";
+  const titleClass = compact ? "text-lg text-white leading-tight" : "text-2xl text-white";
 
   return (
     <article className="group overflow-hidden rounded-none border border-white/45 bg-black">
-      <div className="relative flex min-h-[300px] items-center justify-center overflow-hidden p-4 sm:p-8">
+      <div className={mediaClass}>
         <div className={frameClass}>
           <Image
             src={imageSrc}
@@ -44,9 +48,9 @@ export function ProjectCard({ project, screenshotPath }: ProjectCardProps) {
           />
         </div>
       </div>
-      <div className="space-y-3 border-t border-white/35 p-5">
+      <div className={bodyClass}>
         <p className="text-[10px] tracking-[0.3em] text-white/70">{project.category.toUpperCase()}</p>
-        <h3 className="text-2xl text-white">{project.title}</h3>
+        <h3 className={titleClass}>{project.title}</h3>
         <p className="text-xs leading-relaxed text-white/75">{project.description}</p>
         <a
           href={project.url}

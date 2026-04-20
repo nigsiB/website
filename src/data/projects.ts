@@ -22,13 +22,14 @@ export const projects: PortfolioProject[] = [
     description: "Personal platform centered on speaking, advocacy, and media.",
     category: "Personal Brand",
     device: "desktop",
+    latest: true,
   },
   {
     url: "https://kdcexclusive.com",
     title: "KDC Exclusive",
     description: "Celebrity-backed jewellery e-commerce with campaign storytelling.",
     category: "E-Commerce",
-    device: "mobile",
+    device: "desktop",
     latest: true,
   },
   {

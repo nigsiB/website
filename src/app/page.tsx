@@ -23,13 +23,13 @@ export default function Home() {
             A rotating set of recent web and brand projects. Visit the Work pages for the full archive.
           </p>
           <div className="mt-8">
-            <ProjectGrid latestOnly limit={4} />
+            <ProjectGrid latestOnly limit={4} compact />
           </div>
         </div>
       </section>
 
       <section className="invert-panel border-t border-black/10 px-6 py-14 md:px-12 md:py-20">
-        <div className="mx-auto w-full max-w-6xl rounded-sm border border-black/10 bg-white p-5 md:p-7">
+        <div className="mx-auto w-full max-w-6xl rounded-sm bg-white p-5 md:p-7">
           <div className="invert-dots flex flex-col gap-6 border border-black/15 p-6 md:flex-row md:items-end md:justify-between md:p-8">
             <div>
               <p className="text-xs tracking-[0.3em] text-black/60">READY TO TALK?</p>
