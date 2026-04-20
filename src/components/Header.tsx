@@ -1,18 +1,33 @@
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+const navLinks = [
+  { href: "/", label: "HOME" },
+  { href: "/work", label: "WORK" },
+  { href: "/about", label: "ABOUT" },
+  { href: "/contact", label: "CONTACT" },
+];
+
 export function Header() {
+  const pathname = usePathname();
+
   return (
     <header className="border-b border-white/35 px-6 py-8 md:px-12">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between">
-        <p className="text-xs tracking-[0.35em] text-white/80 md:text-sm">NIGSIB</p>
+        <Link href="/" className="text-xs tracking-[0.35em] text-white/80 transition-colors hover:text-white md:text-sm">
+          NIGSIB
+        </Link>
         <nav className="flex gap-6 text-xs tracking-[0.25em] text-white/80 md:text-sm">
-          <a href="#work" className="hover:text-white">
-            WORK
-          </a>
-          <a href="#about" className="hover:text-white">
-            ABOUT
-          </a>
-          <a href="#contact" className="hover:text-white">
-            CONTACT
-          </a>
+          {navLinks.map((link) => {
+            const isActive = link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
+            return (
+              <Link key={link.href} href={link.href} className={isActive ? "text-white" : "hover:text-white"}>
+                {link.label}
+              </Link>
+            );
+          })}
         </nav>
       </div>
     </header>

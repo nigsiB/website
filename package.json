@@ -12,7 +12,9 @@
     "screenshots:service": "SCREENSHOT_PROVIDER=service tsx scripts/capture-screenshots.ts"
   },
   "dependencies": {
+    "@napi-rs/canvas": "^0.1.99",
     "next": "16.2.1",
+    "pdfjs-dist": "^5.4.624",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },

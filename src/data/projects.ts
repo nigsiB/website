@@ -4,6 +4,7 @@ export type PortfolioProject = {
   description: string;
   category: string;
   device: "desktop" | "tablet" | "mobile";
+  latest?: boolean;
 };
 
 export const projects: PortfolioProject[] = [
@@ -13,41 +14,7 @@ export const projects: PortfolioProject[] = [
     description: "Luxury Medellin travel experience rooted in education and impact.",
     category: "Tourism",
     device: "desktop",
-  },
-  {
-    url: "https://www.ednmanagement.com",
-    title: "EDN Management",
-    description: "Artist and talent management with a clean corporate presentation.",
-    category: "Entertainment",
-    device: "mobile",
-  },
-  {
-    url: "https://www.montrosesolicitors.co.uk",
-    title: "Montrose Solicitors - Branding and website",
-    description: "UK law firm site focused on trust, clarity, and service depth.",
-    category: "Legal",
-    device: "desktop",
-  },
-  {
-    url: "https://www.ellyowenwine.com",
-    title: "Elly Owen Wine",
-    description: "Sommelier and wine education brand with a polished editorial tone.",
-    category: "Food and Drink",
-    device: "desktop",
-  },
-  {
-    url: "https://www.truecannagenetics.com",
-    title: "True Canna Genetics",
-    description: "Product-led seed genetics store with strong visual merchandising.",
-    category: "E-Commerce",
-    device: "mobile",
-  },
-  {
-    url: "https://de-odr.com",
-    title: "DE-ODR",
-    description: "Online dispute-resolution platform concept and product narrative.",
-    category: "Legal Tech",
-    device: "tablet",
+    latest: true,
   },
   {
     url: "https://wra-official.com",
@@ -60,6 +27,29 @@ export const projects: PortfolioProject[] = [
     url: "https://kdcexclusive.com",
     title: "KDC Exclusive",
     description: "Celebrity-backed jewellery e-commerce with campaign storytelling.",
+    category: "E-Commerce",
+    device: "mobile",
+    latest: true,
+  },
+  {
+    url: "https://www.montrosesolicitors.co.uk",
+    title: "Montrose Solicitors",
+    description: "Branding + Website - UK law firm site focused on trust, clarity, and service depth.",
+    category: "Legal",
+    device: "desktop",
+    latest: true,
+  },
+  {
+    url: "https://www.ellyowenwine.com",
+    title: "Elly Owen Wine",
+    description: "Branding + Website - Sommelier and wine education brand with a polished editorial tone.",
+    category: "Food and Drink",
+    device: "desktop",
+  },
+  {
+    url: "https://www.truecannagenetics.com",
+    title: "True Canna Genetics",
+    description: "Product-led seed genetics store with strong visual merchandising.",
     category: "E-Commerce",
     device: "mobile",
   },

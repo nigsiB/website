@@ -42,6 +42,12 @@ a {
   color: #000000;
 }
 
+.invert-dots {
+  background-color: #ffffff !important;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.2) 1.25px, transparent 1.25px) !important;
+  background-size: 18px 18px !important;
+}
+
 .device-frame {
   position: relative;
   overflow: hidden;

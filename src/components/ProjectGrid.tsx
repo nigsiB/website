@@ -1,23 +1,24 @@
 import { projects } from "@/data/projects";
+import { slugifyUrl } from "@/lib/slugify";
 
 import { ProjectCard } from "./ProjectCard";
 
-const slugify = (url: string) =>
-  url
-    .replace(/^https?:\/\//, "")
-    .replace(/^www\./, "")
-    .replace(/[^a-zA-Z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "")
-    .toLowerCase();
+type ProjectGridProps = {
+  limit?: number;
+  latestOnly?: boolean;
+};
 
-export function ProjectGrid() {
+export function ProjectGrid({ limit, latestOnly = false }: ProjectGridProps) {
+  const sourceProjects = latestOnly ? projects.filter((project) => project.latest) : projects;
+  const visibleProjects = typeof limit === "number" ? sourceProjects.slice(0, limit) : sourceProjects;
+
   return (
     <div className="grid gap-6 md:grid-cols-2">
-      {projects.map((project) => (
+      {visibleProjects.map((project) => (
         <ProjectCard
           key={project.url}
           project={project}
-          screenshotPath={`/screenshots/${slugify(project.url)}.png`}
+          screenshotPath={`/screenshots/${slugifyUrl(project.url)}.png`}
         />
       ))}
     </div>
