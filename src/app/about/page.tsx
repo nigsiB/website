@@ -75,13 +75,13 @@ export default function AboutPage() {
         <div className="mt-10 grid gap-6 md:grid-cols-2">
           <article className="border border-white/35 bg-black p-5">
             <div className="flex items-start gap-4">
-              <div className="relative h-20 w-20 shrink-0 overflow-hidden border border-white/25">
+              <div className="relative h-24 w-24 shrink-0 overflow-hidden border border-white/25">
                 <Image
                   src="/images/nigel-profile.png"
                   alt="Nigel Burt portrait"
                   fill
                   className="object-cover grayscale"
-                  sizes="80px"
+                  sizes="96px"
                 />
               </div>
               <div>
@@ -98,10 +98,14 @@ export default function AboutPage() {
             <p className="text-[10px] tracking-[0.3em] text-white/70">CAPABILITIES</p>
             <p className="mt-2 text-xs leading-relaxed text-white/80">
               Digital design (web/mobile/DOOH), brand systems, print campaigns, video and animation, photography, and production
-              rollout. Platform/tool experience includes Adobe CC, 3D Studio Max, HTML and CSS.
+              rollout. Platform/tool experience includes Adobe CC, 3D Studio Max, Squarespace, HTML/CSS, and coding in Cursor.
             </p>
             <p className="mt-4 text-xs leading-relaxed text-white/80">
-              Recognition includes IVCA Gold and Silver, MIMA Silver, and NMA B2B Effectiveness.
+              I am evolving as a creative, utilising AI systems, image and video generation, and modern coding workflows to stay
+              current with the latest tools while moving from concept to polished output at pace.
+            </p>
+            <p className="mt-4 text-xs leading-relaxed text-white/80">
+              Recognition: IVCA Gold, IVCA Silver, MIMA Silver, and NMA B2B Effectiveness.
             </p>
           </article>
         </div>

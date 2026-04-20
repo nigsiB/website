@@ -40,6 +40,11 @@ async function runPlaywrightCapture() {
   const browser = await chromium.launch({ headless: true });
   const context = await browser.newContext({
     viewport: { width: 1440, height: 900 },
+    deviceScaleFactor: 1,
+    isMobile: false,
+    hasTouch: false,
+    userAgent:
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36",
   });
 
   for (const project of projects) {
@@ -50,6 +55,7 @@ async function runPlaywrightCapture() {
     try {
       console.log(`Playwright capturing ${project.url}`);
       await page.goto(project.url, { waitUntil: "domcontentloaded", timeout: 45000 });
+      await page.setViewportSize({ width: 1440, height: 900 });
       // Allow page transitions/entrance animations to complete before capture.
       await page.waitForTimeout(Number.isFinite(screenshotDelayMs) ? screenshotDelayMs : 5000);
       await page.screenshot({ path: outputPath, fullPage: false });
