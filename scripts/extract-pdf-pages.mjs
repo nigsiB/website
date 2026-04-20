@@ -9,7 +9,7 @@ const pdfPath = path.join(workspaceRoot, "pdf_portfolio_1920x1080_04_150dpi.pdf"
 const outputDir = path.join(workspaceRoot, "public", "portfolio-pdf");
 
 // Selected pages that visually represent About + Work sections.
-const selectedPages = [1, 4, 5, 6, 8, 10, 12, 13, 15, 16];
+const selectedPages = [1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16];
 
 class NodeCanvasFactory {
   create(width, height) {

@@ -52,6 +52,6 @@ export const projects: PortfolioProject[] = [
     title: "True Canna Genetics",
     description: "Product-led seed genetics store with strong visual merchandising.",
     category: "E-Commerce",
-    device: "mobile",
+    device: "desktop",
   },
 ];

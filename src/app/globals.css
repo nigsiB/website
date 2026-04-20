@@ -31,6 +31,7 @@ h2,
 h3 {
   font-family: "Anton", sans-serif;
   letter-spacing: 0.02em;
+  line-height: 1.02;
 }
 
 a {
@@ -46,6 +47,11 @@ a {
   background-color: #ffffff !important;
   background-image: radial-gradient(rgba(0, 0, 0, 0.2) 1.25px, transparent 1.25px) !important;
   background-size: 18px 18px !important;
+}
+
+.brand-b {
+  font-weight: 700;
+  margin-left: 4px;
 }
 
 .device-frame {

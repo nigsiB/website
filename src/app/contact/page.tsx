@@ -55,18 +55,8 @@ export default function ContactPage() {
             >
               SEND ENQUIRY
             </button>
-            <a
-              className="inline-flex min-w-[10rem] items-center justify-center border border-black px-4 py-2 text-xs tracking-[0.2em] text-black transition-colors hover:bg-black hover:text-white"
-              href="mailto:nigelburt@gmail.com"
-            >
-              EMAIL DIRECT
-            </a>
           </div>
         </form>
-
-        <div className="mt-8 text-xs tracking-[0.16em] text-black/65">
-          <p>nigelburt@gmail.com</p>
-        </div>
       </div>
     </main>
   );

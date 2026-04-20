@@ -33,7 +33,7 @@ export function PdfImageLightbox({ src, alt, sizes }: PdfImageLightboxProps) {
         className="absolute inset-0 block cursor-zoom-in focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
         aria-label={`Open ${alt} fullscreen`}
       >
-        <Image src={src} alt={alt} fill className="object-cover object-top" sizes={sizes} />
+        <Image src={src} alt={alt} fill className="bg-black object-contain object-top" sizes={sizes} />
       </button>
 
       {open ? (

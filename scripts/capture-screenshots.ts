@@ -52,7 +52,7 @@ async function runPlaywrightCapture() {
       await page.goto(project.url, { waitUntil: "domcontentloaded", timeout: 45000 });
       // Allow page transitions/entrance animations to complete before capture.
       await page.waitForTimeout(Number.isFinite(screenshotDelayMs) ? screenshotDelayMs : 5000);
-      await page.screenshot({ path: outputPath, fullPage: true });
+      await page.screenshot({ path: outputPath, fullPage: false });
       console.log(`Saved ${outputPath}`);
     } catch (error) {
       console.error(`Playwright failed ${project.url}`, error);

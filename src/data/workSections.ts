@@ -49,7 +49,7 @@ export const workSections: Record<WorkSectionKey, WorkSection> = {
         summary:
           "Developed a fresh brand and packaging system to differentiate product lines and improve shelf impact.",
         disciplines: "Brand Design, Packaging, Graphic Design",
-        imagePath: "/portfolio-pdf/page-10.jpg",
+        imagePath: "/portfolio-pdf/page-11.jpg",
         source: "pdf",
       },
       {
@@ -57,7 +57,15 @@ export const workSections: Record<WorkSectionKey, WorkSection> = {
         summary:
           "Built brand language and visual consistency across web, social, event collateral, and large-format placements.",
         disciplines: "Branding, Campaign Design, Environmental Graphics",
-        imagePath: "/portfolio-pdf/page-08.jpg",
+        imagePath: "/portfolio-pdf/page-10.jpg",
+        source: "pdf",
+      },
+      {
+        title: "Wellan 2000 Africa",
+        summary:
+          "Creative direction across product launches and campaigns with consistent branding across digital, print, and exhibition channels.",
+        disciplines: "Creative Direction, Brand Systems, Campaign Design",
+        imagePath: "/portfolio-pdf/page-13.jpg",
         source: "pdf",
       },
     ],
@@ -92,6 +100,14 @@ export const workSections: Record<WorkSectionKey, WorkSection> = {
         imagePath: "/portfolio-pdf/page-12.jpg",
         source: "pdf",
       },
+      {
+        title: "Wellan 2000 Africa",
+        summary:
+          "Developed and maintained web and digital communications to support product positioning and customer education.",
+        disciplines: "Web Design, Digital Communications, Marketing Support",
+        imagePath: "/portfolio-pdf/page-13.jpg",
+        source: "pdf",
+      },
     ],
   },
   "print-packaging": {
@@ -104,7 +120,7 @@ export const workSections: Record<WorkSectionKey, WorkSection> = {
         summary:
           "Designed packaging hierarchy, regulatory callouts and visual tone for initial CBD product range.",
         disciplines: "Packaging Design, Graphic Systems",
-        imagePath: "/portfolio-pdf/page-10.jpg",
+        imagePath: "/portfolio-pdf/page-11.jpg",
         source: "pdf",
       },
       {
@@ -123,6 +139,14 @@ export const workSections: Record<WorkSectionKey, WorkSection> = {
         imagePath: "/portfolio-pdf/page-16.jpg",
         source: "pdf",
       },
+      {
+        title: "Wellan 2000 Africa Print Campaigns",
+        summary:
+          "Delivered brochures, print adverts, and exhibition-ready marketing collateral with strong product storytelling.",
+        disciplines: "Print Advertising, Brochure Design, Production",
+        imagePath: "/portfolio-pdf/page-13.jpg",
+        source: "pdf",
+      },
     ],
   },
   exhibition: {
@@ -136,7 +160,15 @@ export const workSections: Record<WorkSectionKey, WorkSection> = {
         summary:
           "Delivered full event branding with consistent assets across showground signage, print and promotional channels.",
         disciplines: "Exhibition Branding, Large Format, Wayfinding",
-        imagePath: "/portfolio-pdf/page-06.jpg",
+        imagePath: "/portfolio-pdf/page-07.jpg",
+        source: "pdf",
+      },
+      {
+        title: "Product Earth 2017",
+        summary:
+          "Evolved the event identity for a new urban venue and delivered integrated digital, print, and on-site collateral.",
+        disciplines: "Branding, Print, Digital, Large Format",
+        imagePath: "/portfolio-pdf/page-08.jpg",
         source: "pdf",
       },
       {
@@ -144,7 +176,7 @@ export const workSections: Record<WorkSectionKey, WorkSection> = {
         summary:
           "Expanded the campaign with responsive web, DOOH placements, bus advertising and on-site collateral.",
         disciplines: "Branding, DOOH, Web, Print, Vehicle Livery",
-        imagePath: "/portfolio-pdf/page-08.jpg",
+        imagePath: "/portfolio-pdf/page-09.jpg",
         source: "pdf",
       },
       {

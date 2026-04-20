@@ -17,7 +17,7 @@ export function Header() {
     <header className="border-b border-white/35 px-6 py-8 md:px-12">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between">
         <Link href="/" className="text-xs tracking-[0.35em] text-white/80 transition-colors hover:text-white md:text-sm">
-          NIGSIB
+          NIGSI<span className="brand-b">B</span>
         </Link>
         <nav className="flex gap-6 text-xs tracking-[0.25em] text-white/80 md:text-sm">
           {navLinks.map((link) => {
