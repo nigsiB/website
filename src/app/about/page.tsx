@@ -74,23 +74,30 @@ export default function AboutPage() {
 
         <div className="mt-10 grid gap-6 md:grid-cols-2">
           <article className="border border-white/35 bg-black p-5">
-            <div className="flex items-start gap-4">
-              <div className="relative h-24 w-24 shrink-0 overflow-hidden border border-white/25">
+            <div>
+              <div className="relative float-left mr-4 mb-[3px] h-28 w-28 overflow-hidden border border-white/25">
                 <Image
                   src="/images/nigel-profile.png"
                   alt="Nigel Burt portrait"
                   fill
                   className="object-cover grayscale"
-                  sizes="96px"
+                  sizes="112px"
                 />
               </div>
-              <div>
-                <p className="text-[10px] tracking-[0.3em] text-white/70">PROFILE</p>
-                <p className="mt-2 text-xs leading-relaxed text-white/80">
-                  Nearly three decades of multidisciplinary creative delivery across digital, print, motion, branding and
-                  experiential projects for agencies, brands and founder-led businesses.
-                </p>
-              </div>
+              <p className="text-[10px] tracking-[0.3em] text-white/70">PROFILE</p>
+              <p className="mt-2 text-xs leading-relaxed text-white/80">
+                Nearly three decades of multidisciplinary creative delivery across digital, print, motion, branding and
+                experiential projects for agencies, brands and founder-led businesses.
+              </p>
+              <p className="mt-3 text-xs leading-relaxed text-white/80">
+                My core approach is still the same: solve the brief properly, build a tailored concept that genuinely fits the
+                audience, then execute with precision and clarity across every touchpoint.
+              </p>
+              <p className="mt-3 text-xs leading-relaxed text-white/80">
+                Alongside design direction, I have led projects from first client conversations through planning, production and
+                delivery, balancing creativity, timescales and commercial outcomes.
+              </p>
+              <div className="clear-both" />
             </div>
           </article>
 
