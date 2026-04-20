@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "screenshots": "tsx scripts/capture-screenshots.ts"
+    "screenshots": "tsx scripts/capture-screenshots.ts",
+    "screenshots:playwright": "SCREENSHOT_PROVIDER=playwright tsx scripts/capture-screenshots.ts",
+    "screenshots:service": "SCREENSHOT_PROVIDER=service tsx scripts/capture-screenshots.ts"
   },
   "dependencies": {
     "next": "16.2.1",
