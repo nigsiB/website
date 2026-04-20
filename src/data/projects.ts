@@ -23,10 +23,10 @@ export const projects: PortfolioProject[] = [
   },
   {
     url: "https://www.montrosesolicitors.co.uk",
-    title: "Montrose Solicitors",
+    title: "Montrose Solicitors - Branding and website",
     description: "UK law firm site focused on trust, clarity, and service depth.",
     category: "Legal",
-    device: "tablet",
+    device: "desktop",
   },
   {
     url: "https://www.ellyowenwine.com",
