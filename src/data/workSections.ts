@@ -180,6 +180,14 @@ export const workSections: Record<WorkSectionKey, WorkSection> = {
         source: "pdf",
       },
       {
+        title: "The Hydroponic Expo 2019",
+        summary:
+          "Developed event identity and rollout assets spanning web, social, print and large-format exhibition communications.",
+        disciplines: "Branding, Web, Digital, Large Format Exhibition",
+        imagePath: "/portfolio-pdf/page-10.jpg",
+        source: "pdf",
+      },
+      {
         title: "Wellan 2000 Africa",
         summary:
           "Creative direction across exhibitions, product launches, brochures and customer-facing print campaigns.",
