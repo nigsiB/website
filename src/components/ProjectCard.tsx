@@ -41,7 +41,7 @@ export function ProjectCard({ project, screenshotPath, compact = false }: Projec
             alt={`${project.title} screenshot`}
             fill
             unoptimized
-            className="object-cover object-top transition duration-300 group-hover:scale-105"
+            className="bg-black object-contain object-top transition duration-300 group-hover:scale-105"
             loading="lazy"
             onError={() => setImageSrc(placeholderSrc)}
             sizes="(max-width: 768px) 100vw, 50vw"

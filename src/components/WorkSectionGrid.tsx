@@ -22,7 +22,7 @@ export function WorkSectionGrid({ section }: WorkSectionGridProps) {
                   src={item.imagePath}
                   alt={`${item.title} portfolio visual`}
                   fill
-                  className="object-cover object-top"
+                  className="bg-black object-contain object-top"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
               )}
