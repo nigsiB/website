@@ -7,7 +7,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Nigsib Portfolio",
-  description: "Black and white portfolio with automated project screenshots.",
+  description: "MULTIDISCIPLINARY DESIGN THAT SHIPS",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
