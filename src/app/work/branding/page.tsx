@@ -1,6 +1,6 @@
 import { WorkSectionGrid } from "@/components/WorkSectionGrid";
 import { WorkSubnav } from "@/components/WorkSubnav";
-import { workSections } from "@/data/workSections";
+import { workSectionAccents, workSections } from "@/data/workSections";
 
 export default function BrandingWorkPage() {
   const section = workSections.branding;
@@ -11,6 +11,7 @@ export default function BrandingWorkPage() {
         <p className="text-xs tracking-[0.3em] text-white/70">WORK</p>
         <h1 className="mt-3 display-title">{section.title}</h1>
         <WorkSubnav />
+        <div className="mt-6 mb-8 h-[5px] w-full" style={{ backgroundColor: workSectionAccents.branding }} />
         <WorkSectionGrid section={section} />
       </div>
     </main>

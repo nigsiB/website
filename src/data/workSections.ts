@@ -20,6 +20,13 @@ export type WorkSection = {
   items: WorkItem[];
 };
 
+export const workSectionAccents: Record<WorkSectionKey, string> = {
+  branding: "#ff5c8a",
+  "web-interactive": "#54c7ec",
+  "print-packaging": "#c8912f",
+  exhibition: "#7ecf5f",
+};
+
 const webFromLive: WorkItem[] = projects.map((project) => ({
   title: project.title,
   summary: project.description,

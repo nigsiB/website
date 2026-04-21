@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { WorkSubnav } from "@/components/WorkSubnav";
-import { workSectionOrder, workSections } from "@/data/workSections";
+import { workSectionAccents, workSectionOrder, workSections } from "@/data/workSections";
 
 export default function WorkIndexPage() {
   return (
@@ -21,8 +21,13 @@ export default function WorkIndexPage() {
               <Link
                 key={section.key}
                 href={`/work/${section.key}`}
-                className="block border border-white/35 bg-black p-6 transition-colors hover:border-white"
+                className="relative block overflow-hidden border border-white/35 bg-black py-6 pr-6 pl-11 transition-colors hover:border-white"
               >
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-y-0 left-0 w-5"
+                  style={{ backgroundColor: workSectionAccents[section.key] }}
+                />
                 <p className="text-[10px] tracking-[0.3em] text-white/70">SECTION</p>
                 <h2 className="mt-3 text-3xl text-white">{section.title}</h2>
                 <p className="mt-4 text-xs leading-relaxed text-white/75">{section.intro}</p>
