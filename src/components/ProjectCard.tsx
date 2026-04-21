@@ -25,6 +25,7 @@ export function ProjectCard({ project, screenshotPath, compact = false }: Projec
   const mediaClass = compact ? "relative aspect-[16/10] overflow-hidden" : "relative aspect-[16/10] overflow-hidden";
   const bodyClass = compact ? "space-y-2 border-t border-white/35 p-3" : "space-y-3 border-t border-white/35 p-5";
   const titleClass = compact ? "text-lg text-white leading-tight" : "text-2xl text-white";
+  const launchTextClass = compact ? "text-white" : "text-white/90";
 
   return (
     <article className="group overflow-hidden rounded-none border border-white/45 bg-black">
@@ -44,7 +45,7 @@ export function ProjectCard({ project, screenshotPath, compact = false }: Projec
           target="_blank"
           rel="noreferrer"
           aria-label={`Launch ${project.title}`}
-          className="absolute inset-0 z-10 flex items-center justify-center bg-black/0 text-xs tracking-[0.2em] text-white/80 opacity-0 transition-all duration-200 hover:bg-black/35 hover:opacity-100 focus-visible:bg-black/35 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
+          className={`absolute inset-0 z-10 flex items-center justify-center bg-black/0 text-sm font-black tracking-[0.24em] ${launchTextClass} opacity-0 transition-all duration-200 hover:bg-black/35 hover:opacity-100 focus-visible:bg-black/35 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80`}
         >
           LAUNCH SITE
         </a>
