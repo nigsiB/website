@@ -23,7 +23,11 @@ export function Header() {
           {navLinks.map((link) => {
             const isActive = link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
             return (
-              <Link key={link.href} href={link.href} className={isActive ? "text-white" : "hover:text-white"}>
+              <Link
+                key={link.href}
+                href={link.href}
+                className={isActive ? "font-bold text-white" : "hover:text-white"}
+              >
                 {link.label}
               </Link>
             );

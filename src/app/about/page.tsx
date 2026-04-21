@@ -11,7 +11,7 @@ const workHistory = [
   {
     period: "Oct 2016 - Jan 2017",
     role: "Freelance Creative Designer",
-    company: "London live entertainment venue",
+    company: "LONDON CABARET CLUB - Live Entertainment Venue",
     summary: "Produced promotional design, social content, and motion/video assets for premium live event marketing.",
   },
   {
@@ -112,16 +112,22 @@ export default function AboutPage() {
               current with the latest tools while moving from concept to polished output at pace.
             </p>
             <p className="mt-4 text-xs leading-relaxed text-white/80">
-              Recognition: IVCA Gold, IVCA Silver, MIMA Silver, and NMA B2B Effectiveness.
+              Recognition: Awards include - IVCA Gold, IVCA Silver, MIMA Silver, and NMA B2B Effectiveness.
             </p>
           </article>
         </div>
 
         <div className="mt-10">
-          <p className="text-xs tracking-[0.3em] text-white/70">WORK HISTORY</p>
+          <p className="text-xs tracking-[0.3em] text-white/70">A BRIEF WORK HISTORY</p>
           <div className="mt-4 grid gap-4 md:grid-cols-2">
-            {workHistory.map((item) => (
-              <article key={`${item.period}-${item.role}`} className="border border-white/30 bg-black p-5">
+            {workHistory.map((item, index) => (
+              <article key={`${item.period}-${item.role}`} className="relative border border-white/30 bg-black p-5">
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute top-2 right-3 text-4xl leading-none font-black text-white/10"
+                >
+                  {workHistory.length - index}
+                </span>
                 <p className="text-[10px] tracking-[0.25em] text-white/60">{item.period.toUpperCase()}</p>
                 <h3 className="mt-2 text-2xl text-white">{item.role}</h3>
                 <p className="mt-1 text-xs tracking-[0.16em] text-white/65">{item.company.toUpperCase()}</p>
