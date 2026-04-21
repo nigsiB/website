@@ -22,31 +22,23 @@ export function ProjectCard({ project, screenshotPath, compact = false }: Projec
   }, [project.url]);
 
   const [imageSrc, setImageSrc] = useState(screenshotPath);
-  const frameClass =
-    project.device === "mobile"
-      ? "device-frame device-mobile"
-      : project.device === "tablet"
-        ? "device-frame device-tablet"
-        : "device-frame device-desktop";
-  const mediaClass = compact ? "relative flex min-h-[180px] items-center justify-center overflow-hidden p-3" : "relative flex min-h-[300px] items-center justify-center overflow-hidden p-4 sm:p-8";
+  const mediaClass = compact ? "relative aspect-[16/10] overflow-hidden" : "relative aspect-[16/10] overflow-hidden";
   const bodyClass = compact ? "space-y-2 border-t border-white/35 p-3" : "space-y-3 border-t border-white/35 p-5";
   const titleClass = compact ? "text-lg text-white leading-tight" : "text-2xl text-white";
 
   return (
     <article className="group overflow-hidden rounded-none border border-white/45 bg-black">
       <div className={mediaClass}>
-        <div className={frameClass}>
-          <Image
-            src={imageSrc}
-            alt={`${project.title} screenshot`}
-            fill
-            unoptimized
-            className="bg-black object-contain object-top transition duration-300 group-hover:scale-105"
-            loading="lazy"
-            onError={() => setImageSrc(placeholderSrc)}
-            sizes="(max-width: 768px) 100vw, 50vw"
-          />
-        </div>
+        <Image
+          src={imageSrc}
+          alt={`${project.title} screenshot`}
+          fill
+          unoptimized
+          className="bg-black object-contain object-top transition duration-300 group-hover:scale-105"
+          loading="lazy"
+          onError={() => setImageSrc(placeholderSrc)}
+          sizes="(max-width: 768px) 100vw, 50vw"
+        />
       </div>
       <div className={bodyClass}>
         <p className="text-[10px] tracking-[0.3em] text-white/70">{project.category.toUpperCase()}</p>

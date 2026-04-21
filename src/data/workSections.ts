@@ -147,6 +147,30 @@ export const workSections: Record<WorkSectionKey, WorkSection> = {
         imagePath: "/portfolio-pdf/page-13.jpg",
         source: "pdf",
       },
+      {
+        title: "Product Earth 2016",
+        summary:
+          "Delivered full event branding with consistent assets across showground signage, print and promotional channels.",
+        disciplines: "Exhibition Branding, Large Format, Wayfinding",
+        imagePath: "/portfolio-pdf/page-07.jpg",
+        source: "pdf",
+      },
+      {
+        title: "Product Earth 2017",
+        summary:
+          "Evolved the event identity for a new urban venue and delivered integrated digital, print, and on-site collateral.",
+        disciplines: "Branding, Print, Digital, Large Format",
+        imagePath: "/portfolio-pdf/page-08.jpg",
+        source: "pdf",
+      },
+      {
+        title: "Product Earth 2019",
+        summary:
+          "Expanded the campaign with responsive web, DOOH placements, bus advertising and on-site collateral.",
+        disciplines: "Branding, DOOH, Web, Print, Vehicle Livery",
+        imagePath: "/portfolio-pdf/page-09.jpg",
+        source: "pdf",
+      },
     ],
   },
   exhibition: {
