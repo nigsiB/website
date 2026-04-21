@@ -23,9 +23,7 @@ export function WorkSubnav() {
         const isActive = pathname === link.href;
         const accent = link.sectionKey ? workSectionAccents[link.sectionKey] : null;
 
-        const className = isActive
-          ? "border px-3 py-2 font-semibold visited:!text-black"
-          : "border px-3 py-2 transition-colors";
+        const className = isActive ? "border px-3 py-2 font-black" : "border px-3 py-2 transition-colors";
 
         const style = isActive
           ? accent
