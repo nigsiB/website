@@ -39,6 +39,15 @@ export function ProjectCard({ project, screenshotPath, compact = false }: Projec
           onError={() => setImageSrc(placeholderSrc)}
           sizes="(max-width: 768px) 100vw, 50vw"
         />
+        <a
+          href={project.url}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={`Launch ${project.title}`}
+          className="absolute inset-0 z-10 flex items-center justify-center bg-black/0 text-xs tracking-[0.2em] text-white/80 opacity-0 transition-all duration-200 hover:bg-black/35 hover:opacity-100 focus-visible:bg-black/35 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
+        >
+          LAUNCH SITE
+        </a>
       </div>
       <div className={bodyClass}>
         <p className="text-[10px] tracking-[0.3em] text-white/70">{project.category.toUpperCase()}</p>
