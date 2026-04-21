@@ -11,7 +11,7 @@ export default function Home() {
           <h1 className="display-hero mt-3 max-w-4xl">MULTIDISCIPLINARY DESIGN THAT SHIPS.</h1>
           <p className="mt-8 max-w-2xl text-sm leading-relaxed text-white/75">
             Across digital, print, brand and exhibition, I design clear visual systems that perform in the real world.
-            Explore the latest work here, then dive deeper across categories.
+            then explore my portfolio, or better still - get in touch to discuss your requirements.
           </p>
         </div>
       </section>
