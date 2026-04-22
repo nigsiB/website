@@ -60,7 +60,7 @@ export function PdfImageLightbox({ src, alt, sizes }: PdfImageLightboxProps) {
             CLOSE
           </button>
           <div
-            className="relative h-full w-full max-w-[1600px]"
+            className="relative h-[90vh] w-[95vw] max-w-[1600px]"
             onClick={(event) => event.stopPropagation()}
           >
             {isPdf ? (
