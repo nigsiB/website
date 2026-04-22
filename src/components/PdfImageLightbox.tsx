@@ -11,6 +11,7 @@ type PdfImageLightboxProps = {
 
 export function PdfImageLightbox({ src, alt, sizes }: PdfImageLightboxProps) {
   const [open, setOpen] = useState(false);
+  const isPdf = src.toLowerCase().endsWith(".pdf");
 
   useEffect(() => {
     if (!open) return;
@@ -33,7 +34,13 @@ export function PdfImageLightbox({ src, alt, sizes }: PdfImageLightboxProps) {
         className="absolute inset-0 block cursor-zoom-in focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
         aria-label={`Open ${alt} fullscreen`}
       >
-        <Image src={src} alt={alt} fill className="bg-black object-contain object-top" sizes={sizes} />
+        {isPdf ? (
+          <span className="flex h-full w-full items-center justify-center bg-black text-center text-sm tracking-[0.2em] text-white/80">
+            OPEN PDF PREVIEW
+          </span>
+        ) : (
+          <Image src={src} alt={alt} fill className="bg-black object-contain object-top" sizes={sizes} />
+        )}
       </button>
 
       {open ? (
@@ -56,7 +63,15 @@ export function PdfImageLightbox({ src, alt, sizes }: PdfImageLightboxProps) {
             className="relative h-full w-full max-w-[1600px]"
             onClick={(event) => event.stopPropagation()}
           >
-            <Image src={src} alt={alt} fill className="object-contain" sizes="100vw" />
+            {isPdf ? (
+              <iframe
+                src={src}
+                title={alt}
+                className="h-full w-full border-0 bg-black"
+              />
+            ) : (
+              <Image src={src} alt={alt} fill className="object-contain" sizes="100vw" />
+            )}
           </div>
         </div>
       ) : null}
