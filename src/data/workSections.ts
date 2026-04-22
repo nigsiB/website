@@ -123,6 +123,14 @@ export const workSections: Record<WorkSectionKey, WorkSection> = {
     intro: "Editorial, promotional and packaging outputs designed for clarity, conversion and brand consistency.",
     items: [
       {
+        title: "Medellin Tours US Magazine Ad",
+        summary:
+          "Full-page print ad for Tour de La Paz, combining premium travel positioning with campaign storytelling for US magazine placement.",
+        disciplines: "Print Advertising, Campaign Design, Editorial Layout",
+        imagePath: "/MT - US Magazine print ad - 8.5x11.png",
+        source: "pdf",
+      },
+      {
         title: "KDC US Magazine Ad - Own It. Wear It.",
         summary:
           "Full-page US magazine campaign creative for KDC Exclusive, blending celebrity-led storytelling with premium jewellery positioning.",
@@ -136,14 +144,6 @@ export const workSections: Record<WorkSectionKey, WorkSection> = {
           "Companion full-page print ad concept built for editorial impact and launch messaging around the limited-edition collaboration.",
         disciplines: "Print Advertising, Editorial Layout, Campaign Design",
         imagePath: "/KDC - US Magazine print ad - 8.5x11 - 012.png",
-        source: "pdf",
-      },
-      {
-        title: "Medellin Tours US Magazine Ad",
-        summary:
-          "Full-page print ad for Tour de La Paz, combining premium travel positioning with campaign storytelling for US magazine placement.",
-        disciplines: "Print Advertising, Campaign Design, Editorial Layout",
-        imagePath: "/MT - US Magazine print ad - 8.5x11.png",
         source: "pdf",
       },
       {
