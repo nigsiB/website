@@ -1,7 +1,24 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
 import { WorkSubnav } from "@/components/WorkSubnav";
 import { workSectionAccents, workSectionOrder, workSections } from "@/data/workSections";
+
+export const metadata: Metadata = {
+  title: "Work",
+  description:
+    "Explore the complete portfolio archive, organised by branding, web and interactive, print and packaging, and exhibition design disciplines.",
+  keywords: [
+    "design portfolio projects",
+    "branding case studies",
+    "web design projects",
+    "print packaging design",
+    "exhibition design work",
+  ],
+  alternates: {
+    canonical: "/work",
+  },
+};
 
 export default function WorkIndexPage() {
   return (
@@ -10,7 +27,8 @@ export default function WorkIndexPage() {
         <p className="text-xs tracking-[0.3em] text-white/70">WORK</p>
         <h1 className="mt-3 display-title">Portfolio Archive</h1>
         <p className="mt-5 max-w-3xl text-sm leading-relaxed text-white/80">
-          Browse work by discipline. Sections combine live project captures with curated visuals and concise case-study summaries.
+          Browse multidisciplinary design work by discipline, including branding, web and interactive, print and packaging, and
+          exhibition design.
         </p>
         <WorkSubnav />
 

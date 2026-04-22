@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@napi-rs/canvas": "^0.1.99",
+    "@vercel/analytics": "^2.0.1",
     "next": "16.2.1",
     "pdfjs-dist": "^5.4.624",
     "react": "19.2.4",

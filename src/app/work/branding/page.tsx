@@ -1,6 +1,16 @@
+import type { Metadata } from "next";
+
 import { WorkSectionGrid } from "@/components/WorkSectionGrid";
 import { WorkSubnav } from "@/components/WorkSubnav";
 import { workSectionAccents, workSections } from "@/data/workSections";
+
+export const metadata: Metadata = {
+  title: "Branding Work",
+  description: "Brand identity and visual system projects designed for clarity, consistency, and measurable brand impact.",
+  alternates: {
+    canonical: "/work/branding",
+  },
+};
 
 export default function BrandingWorkPage() {
   const section = workSections.branding;

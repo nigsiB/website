@@ -52,7 +52,8 @@ export default function ContactPage() {
       <div className="mx-auto w-full max-w-6xl">
         <h1 className="display-title">CONTACT</h1>
         <p className="mt-4 max-w-2xl text-sm text-black/80">
-          Available for selected freelance and long-term projects. Share a brief and I will get back to you.
+          Available for selected freelance and long-term web, brand, print, and exhibition design projects. Share a brief and I
+          will get back to you.
         </p>
 
         <form className="mt-8 grid gap-4 md:max-w-3xl" onSubmit={handleSubmit}>

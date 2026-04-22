@@ -1,6 +1,17 @@
+import type { Metadata } from "next";
+
 import { WorkSectionGrid } from "@/components/WorkSectionGrid";
 import { WorkSubnav } from "@/components/WorkSubnav";
 import { workSectionAccents, workSections } from "@/data/workSections";
+
+export const metadata: Metadata = {
+  title: "Exhibition Work",
+  description:
+    "Exhibition and experiential projects spanning event graphics, spatial communication, and large-format design systems.",
+  alternates: {
+    canonical: "/work/exhibition",
+  },
+};
 
 export default function ExhibitionWorkPage() {
   const section = workSections.exhibition;

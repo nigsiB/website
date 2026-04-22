@@ -1,6 +1,23 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
 import { ProjectGrid } from "@/components/ProjectGrid";
+
+export const metadata: Metadata = {
+  title: "Home",
+  description:
+    "Multidisciplinary design portfolio featuring web, branding, print, and exhibition projects with real-world commercial outcomes.",
+  keywords: [
+    "multidisciplinary designer",
+    "freelance designer UK",
+    "branding design portfolio",
+    "web design portfolio",
+    "print and exhibition design",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export default function Home() {
   return (
@@ -10,8 +27,8 @@ export default function Home() {
           <p className="text-xs tracking-[0.3em] text-white/80">PORTFOLIO</p>
           <h1 className="display-hero mt-3 max-w-4xl">MULTIDISCIPLINARY DESIGN THAT SHIPS.</h1>
           <p className="mt-8 max-w-2xl text-sm leading-relaxed text-white/75">
-            Across digital, print, brand and exhibition, I design clear visual systems that perform in the real world.
-            then explore my portfolio, or better still - get in touch to discuss your requirements.
+            I am a UK multidisciplinary designer delivering brand, web, print, and exhibition projects that perform in the
+            real world. Explore selected work below, or get in touch to discuss your next project.
           </p>
         </div>
       </section>

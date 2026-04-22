@@ -1,4 +1,21 @@
 import Image from "next/image";
+import type { Metadata } from "next";
+import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "Learn about Nigel Burt: an award-winning multidisciplinary designer with almost 30 years across digital, branding, print, and experiential design.",
+  keywords: [
+    "Nigel Burt designer",
+    "award-winning designer",
+    "brand and web designer",
+    "freelance creative director",
+  ],
+  alternates: {
+    canonical: "/about",
+  },
+};
 
 const workHistory = [
   {
@@ -70,6 +87,20 @@ export default function AboutPage() {
         <p className="mt-4 max-w-4xl text-sm leading-relaxed text-white/80">
           Disciplines include web/mobile design, brand identity, print, animation and photography. Career highlights include
           IVCA Gold and Silver, MIMA Silver, and NMA B2B Effectiveness recognition.
+        </p>
+        <p className="mt-4 max-w-4xl text-sm leading-relaxed text-white/80">
+          Explore the{" "}
+          <Link href="/work" className="underline decoration-white/50 underline-offset-4 transition-colors hover:text-white">
+            full portfolio archive
+          </Link>{" "}
+          or{" "}
+          <Link
+            href="/contact"
+            className="underline decoration-white/50 underline-offset-4 transition-colors hover:text-white"
+          >
+            contact me
+          </Link>{" "}
+          to discuss an upcoming project.
         </p>
 
         <div className="mt-10 grid gap-6 md:grid-cols-2">

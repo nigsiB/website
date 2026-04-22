@@ -1,6 +1,17 @@
+import type { Metadata } from "next";
+
 import { WorkSectionGrid } from "@/components/WorkSectionGrid";
 import { WorkSubnav } from "@/components/WorkSubnav";
 import { workSectionAccents, workSections } from "@/data/workSections";
+
+export const metadata: Metadata = {
+  title: "Print And Packaging Work",
+  description:
+    "Print campaign and packaging design projects focused on strong typography, production quality, and brand consistency.",
+  alternates: {
+    canonical: "/work/print-packaging",
+  },
+};
 
 export default function PrintPackagingWorkPage() {
   const section = workSections["print-packaging"];

@@ -1,6 +1,17 @@
+import type { Metadata } from "next";
+
 import { WorkSectionGrid } from "@/components/WorkSectionGrid";
 import { WorkSubnav } from "@/components/WorkSubnav";
 import { workSectionAccents, workSections } from "@/data/workSections";
+
+export const metadata: Metadata = {
+  title: "Web And Interactive Work",
+  description:
+    "Web and interactive design projects combining UX clarity, visual identity, and practical digital delivery.",
+  alternates: {
+    canonical: "/work/web-interactive",
+  },
+};
 
 export default function WebInteractiveWorkPage() {
   const section = workSections["web-interactive"];
