@@ -143,7 +143,7 @@ export const workSections: Record<WorkSectionKey, WorkSection> = {
         summary:
           "Full-page print ad for Tour de La Paz, combining premium travel positioning with campaign storytelling for US magazine placement.",
         disciplines: "Print Advertising, Campaign Design, Editorial Layout",
-        imagePath: "/MT - US Magazine print ad - 8.5x11 - 01.pdf",
+        imagePath: "/MT - US Magazine print ad - 8.5x11.png",
         source: "pdf",
       },
       {
