@@ -14,8 +14,9 @@ export function PdfImageLightbox({ src, alt, sizes }: PdfImageLightboxProps) {
   const [zoomed, setZoomed] = useState(false);
   const [isPanning, setIsPanning] = useState(false);
   const isPdf = src.toLowerCase().endsWith(".pdf");
-  const [offsetX, setOffsetX] = useState(0);
-  const [offsetY, setOffsetY] = useState(0);
+  const panLayerRef = useRef<HTMLDivElement>(null);
+  const offsetRef = useRef({ x: 0, y: 0 });
+  const rafRef = useRef<number | null>(null);
   const dragRef = useRef({
     active: false,
     moved: false,
@@ -24,6 +25,13 @@ export function PdfImageLightbox({ src, alt, sizes }: PdfImageLightboxProps) {
     startOffsetX: 0,
     startOffsetY: 0,
   });
+
+  const applyTransform = () => {
+    if (!panLayerRef.current) return;
+    panLayerRef.current.style.transform = zoomed
+      ? `translate3d(${offsetRef.current.x}px, ${offsetRef.current.y}px, 0) scale(1.7)`
+      : "translate3d(0px, 0px, 0px) scale(1)";
+  };
 
   useEffect(() => {
     if (!open) return;
@@ -42,16 +50,16 @@ export function PdfImageLightbox({ src, alt, sizes }: PdfImageLightboxProps) {
     if (!open) {
       setZoomed(false);
       setIsPanning(false);
-      setOffsetX(0);
-      setOffsetY(0);
+      offsetRef.current = { x: 0, y: 0 };
+      applyTransform();
     }
   }, [open]);
 
   useEffect(() => {
     if (!zoomed) {
-      setOffsetX(0);
-      setOffsetY(0);
+      offsetRef.current = { x: 0, y: 0 };
     }
+    applyTransform();
   }, [open, zoomed]);
 
   const onPanStart = (event: ReactMouseEvent<HTMLButtonElement>) => {
@@ -63,8 +71,8 @@ export function PdfImageLightbox({ src, alt, sizes }: PdfImageLightboxProps) {
       moved: false,
       startX: event.clientX,
       startY: event.clientY,
-      startOffsetX: offsetX,
-      startOffsetY: offsetY,
+      startOffsetX: offsetRef.current.x,
+      startOffsetY: offsetRef.current.y,
     };
     setIsPanning(true);
   };
@@ -76,8 +84,17 @@ export function PdfImageLightbox({ src, alt, sizes }: PdfImageLightboxProps) {
     if (Math.abs(dx) > 2 || Math.abs(dy) > 2) {
       dragRef.current.moved = true;
     }
-    setOffsetX(dragRef.current.startOffsetX + dx);
-    setOffsetY(dragRef.current.startOffsetY + dy);
+    offsetRef.current = {
+      x: dragRef.current.startOffsetX + dx,
+      y: dragRef.current.startOffsetY + dy,
+    };
+
+    if (rafRef.current === null) {
+      rafRef.current = requestAnimationFrame(() => {
+        applyTransform();
+        rafRef.current = null;
+      });
+    }
   };
 
   const onPanEnd = () => {
@@ -98,6 +115,15 @@ export function PdfImageLightbox({ src, alt, sizes }: PdfImageLightboxProps) {
       window.removeEventListener("mouseup", handleEnd);
     };
   }, [isPanning]);
+
+  useEffect(
+    () => () => {
+      if (rafRef.current !== null) {
+        cancelAnimationFrame(rafRef.current);
+      }
+    },
+    []
+  );
 
   return (
     <>
@@ -138,8 +164,8 @@ export function PdfImageLightbox({ src, alt, sizes }: PdfImageLightboxProps) {
               onClick={(event) => {
                 event.stopPropagation();
                 setZoomed(false);
-                setOffsetX(0);
-                setOffsetY(0);
+                offsetRef.current = { x: 0, y: 0 };
+                applyTransform();
               }}
               className="absolute left-4 top-4 z-20 border border-white/70 bg-black/55 px-3 py-1 text-xs tracking-[0.2em] text-white hover:bg-white hover:text-black md:left-8 md:top-8"
               aria-label="Zoom out image"
@@ -168,17 +194,9 @@ export function PdfImageLightbox({ src, alt, sizes }: PdfImageLightboxProps) {
                   className={`relative block h-full w-full select-none ${zoomed ? (isPanning ? "cursor-grabbing" : "cursor-grab") : "cursor-zoom-in"}`}
                   aria-label={zoomed ? "Pan zoomed image" : "Zoom in image"}
                 >
-                  <Image
-                    src={src}
-                    alt={alt}
-                    fill
-                    className="object-contain transition-transform duration-150"
-                    sizes={zoomed ? "170vw" : "100vw"}
-                    style={{
-                      transform: zoomed ? `translate(${offsetX}px, ${offsetY}px) scale(1.7)` : "translate(0px, 0px) scale(1)",
-                      transformOrigin: "center center",
-                    }}
-                  />
+                  <div ref={panLayerRef} className="relative h-full w-full will-change-transform" style={{ transformOrigin: "center center" }}>
+                    <Image src={src} alt={alt} fill className="object-contain" sizes={zoomed ? "170vw" : "100vw"} />
+                  </div>
                 </button>
               </div>
             )}
