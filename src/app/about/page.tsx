@@ -125,7 +125,7 @@ export default function AboutPage() {
                 audience, then execute with precision and clarity across every touchpoint.
               </p>
               <p className="mt-3 text-xs leading-relaxed text-white/80">
-                Alongside design direction, I have led projects from first client conversations through planning, production and
+                Alongside design direction, I usually lead projects from first client conversations through planning, production and
                 delivery, balancing creativity, timescales and commercial outcomes.
               </p>
               <div className="clear-both" />
