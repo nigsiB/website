@@ -23,7 +23,7 @@ const workHistory = [
     role: "Integrated Designer (Contractor/Freelance)",
     company: "Independent",
     summary:
-      "Delivered long-term cross-channel contracts spanning expo and festival campaigns, digital promotion, print systems, and event collateral.",
+      "Delivered long-term cross-channel contracts spanning expo and festival campaigns, web and e-commerce delivery, digital promotion, print systems, and event collateral.",
   },
   {
     period: "Oct 2016 - Jan 2017",

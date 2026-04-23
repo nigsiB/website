@@ -35,6 +35,8 @@ const webFromLive: WorkItem[] = projects.map((project) => ({
   source: "live",
   url: project.url,
 }));
+const trueCannaLiveItem = webFromLive.find((item) => item.title === "True Canna Genetics");
+const webFromLiveWithoutTrueCanna = webFromLive.filter((item) => item.title !== "True Canna Genetics");
 
 export const workSections: Record<WorkSectionKey, WorkSection> = {
   branding: {
@@ -80,9 +82,9 @@ export const workSections: Record<WorkSectionKey, WorkSection> = {
   "web-interactive": {
     key: "web-interactive",
     title: "Web + Interactive",
-    intro: "Web and interactive work spanning live launches and standout campaigns from earlier eras.",
+    intro: "From my latest live sites to standout campaign builds from earlier eras, this is web and interactive work engineered to perform and built to be remembered.",
     items: [
-      ...webFromLive,
+      ...webFromLiveWithoutTrueCanna,
       {
         title: "Panasonic VS3 Pan-European Launch",
         summary:
@@ -115,17 +117,19 @@ export const workSections: Record<WorkSectionKey, WorkSection> = {
         imagePath: "/portfolio-pdf/page-13.jpg",
         source: "pdf",
       },
+      ...(trueCannaLiveItem ? [trueCannaLiveItem] : []),
     ],
   },
   "print-packaging": {
     key: "print-packaging",
     title: "Print + Packaging",
-    intro: "Editorial, promotional and packaging outputs designed for clarity, conversion and brand consistency.",
+    intro:
+      "High-impact print and packaging for flyers, posters, and marketing collateral, from business cards to large-format exhibition signage, with the versatility to deliver exactly what each brief requires.",
     items: [
       {
         title: "Medellin Tours US Magazine Ad",
         summary:
-          "Full-page print ad for Tour de La Paz, combining premium travel positioning with campaign storytelling for US magazine placement.",
+          "Full-page print ad for Tour de La Paz, created for The Rich Reporter to combine premium travel positioning with campaign storytelling for US magazine placement.",
         disciplines: "Print Advertising, Campaign Design, Editorial Layout",
         imagePath: "/MT - US Magazine print ad - 8.5x11.png",
         source: "pdf",
@@ -133,7 +137,7 @@ export const workSections: Record<WorkSectionKey, WorkSection> = {
       {
         title: "KDC US Magazine Ad - Own It. Wear It.",
         summary:
-          "Full-page US magazine campaign creative for KDC Exclusive, blending celebrity-led storytelling with premium jewellery positioning.",
+          "Full-page US magazine campaign creative for KDC Exclusive, produced for The Rich Reporter and blending celebrity-led storytelling with premium jewellery positioning.",
         disciplines: "Print Advertising, Art Direction, Campaign Design",
         imagePath: "/KDC - US Magazine print ad - 8.5x11 - 01.png",
         source: "pdf",
@@ -141,9 +145,17 @@ export const workSections: Record<WorkSectionKey, WorkSection> = {
       {
         title: "KDC US Magazine Ad - Your Name. Her Signature.",
         summary:
-          "Companion full-page print ad concept built for editorial impact and launch messaging around the limited-edition collaboration.",
+          "Companion full-page print ad concept for The Rich Reporter, built for editorial impact and launch messaging around the limited-edition collaboration.",
         disciplines: "Print Advertising, Editorial Layout, Campaign Design",
         imagePath: "/KDC - US Magazine print ad - 8.5x11 - 012.png",
+        source: "pdf",
+      },
+      {
+        title: "Flyers, Business Cards & Roller Banners",
+        summary:
+          "A focused montage showcasing campaign-ready print assets across flyer design, business cards, and large-format roller banners.",
+        disciplines: "Print Design, Marketing Collateral, Large Format",
+        imagePath: "/print ads/flyers-business-cards-roller-banners-v3.jpg",
         source: "pdf",
       },
       {
@@ -163,14 +175,6 @@ export const workSections: Record<WorkSectionKey, WorkSection> = {
         source: "pdf",
       },
       {
-        title: "Brochures, Tri-Folds & Print Ads",
-        summary:
-          "A curated print set including brochures, event guides and ad formats for diverse client campaigns.",
-        disciplines: "Editorial Design, Advertising Layout, Production Artwork",
-        imagePath: "/portfolio-pdf/page-16.jpg",
-        source: "pdf",
-      },
-      {
         title: "Wellan 2000 Africa Print Campaigns",
         summary:
           "Delivered brochures, print adverts, and exhibition-ready marketing collateral with strong product storytelling.",
@@ -179,11 +183,11 @@ export const workSections: Record<WorkSectionKey, WorkSection> = {
         source: "pdf",
       },
       {
-        title: "Product Earth 2016",
+        title: "Product Earth 2019",
         summary:
-          "Delivered full event branding with consistent assets across showground signage, print and promotional channels.",
-        disciplines: "Exhibition Branding, Large Format, Wayfinding",
-        imagePath: "/portfolio-pdf/page-07.jpg",
+          "Expanded the campaign with responsive web, DOOH placements, bus advertising and on-site collateral.",
+        disciplines: "Branding, DOOH, Web, Print, Vehicle Livery",
+        imagePath: "/portfolio-pdf/page-09.jpg",
         source: "pdf",
       },
       {
@@ -195,11 +199,19 @@ export const workSections: Record<WorkSectionKey, WorkSection> = {
         source: "pdf",
       },
       {
-        title: "Product Earth 2019",
+        title: "Product Earth 2016",
         summary:
-          "Expanded the campaign with responsive web, DOOH placements, bus advertising and on-site collateral.",
-        disciplines: "Branding, DOOH, Web, Print, Vehicle Livery",
-        imagePath: "/portfolio-pdf/page-09.jpg",
+          "Delivered full event branding with consistent assets across showground signage, print and promotional channels.",
+        disciplines: "Exhibition Branding, Large Format, Wayfinding",
+        imagePath: "/portfolio-pdf/page-07.jpg",
+        source: "pdf",
+      },
+      {
+        title: "Brochures, Tri-Folds & Print Ads",
+        summary:
+          "A curated print set including brochures, event guides and ad formats for diverse client campaigns.",
+        disciplines: "Editorial Design, Advertising Layout, Production Artwork",
+        imagePath: "/portfolio-pdf/page-16.jpg",
         source: "pdf",
       },
     ],
@@ -208,14 +220,14 @@ export const workSections: Record<WorkSectionKey, WorkSection> = {
     key: "exhibition",
     title: "Exhibition",
     intro:
-      "Large-scale event identity and environmental rollout spanning signage, wayfinding, social and digital ad placements.",
+      "Exhibition and live event design delivered across large-format signage, wayfinding systems, multi-format print production, and integrated digital campaign touchpoints.",
     items: [
       {
-        title: "Product Earth 2016",
+        title: "Product Earth 2019",
         summary:
-          "Delivered full event branding with consistent assets across showground signage, print and promotional channels.",
-        disciplines: "Exhibition Branding, Large Format, Wayfinding",
-        imagePath: "/portfolio-pdf/page-07.jpg",
+          "Expanded the campaign with responsive web, DOOH placements, bus advertising and on-site collateral.",
+        disciplines: "Branding, DOOH, Web, Print, Vehicle Livery",
+        imagePath: "/portfolio-pdf/page-09.jpg",
         source: "pdf",
       },
       {
@@ -227,11 +239,11 @@ export const workSections: Record<WorkSectionKey, WorkSection> = {
         source: "pdf",
       },
       {
-        title: "Product Earth 2019",
+        title: "Product Earth 2016",
         summary:
-          "Expanded the campaign with responsive web, DOOH placements, bus advertising and on-site collateral.",
-        disciplines: "Branding, DOOH, Web, Print, Vehicle Livery",
-        imagePath: "/portfolio-pdf/page-09.jpg",
+          "Delivered full event branding with consistent assets across showground signage, print and promotional channels.",
+        disciplines: "Exhibition Branding, Large Format, Wayfinding",
+        imagePath: "/portfolio-pdf/page-07.jpg",
         source: "pdf",
       },
       {
