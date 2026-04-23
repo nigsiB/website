@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { ProjectGrid } from "@/components/ProjectGrid";
+import { workSectionAccents, workSectionOrder, workSections } from "@/data/workSections";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -42,13 +43,31 @@ export default function Home() {
           <div className="mt-8">
             <ProjectGrid latestOnly limit={4} compact />
           </div>
-          <div className="mt-8 flex justify-center md:justify-start">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-2 md:justify-start">
             <Link
               href="/work"
-              className="inline-flex min-w-[10rem] items-center justify-center border border-black px-4 py-2 text-xs tracking-[0.2em] text-black transition-colors hover:bg-black hover:text-white"
+              className="inline-flex min-w-[10rem] items-center justify-center border border-black px-4 py-2 text-xs tracking-[0.2em] text-black transition-colors hover:bg-black hover:!text-white"
             >
               VIEW MORE
             </Link>
+            {workSectionOrder.map((sectionKey) => {
+              const section = workSections[sectionKey];
+              const accent = workSectionAccents[sectionKey];
+
+              return (
+                <Link
+                  key={sectionKey}
+                  href={`/work/${sectionKey}`}
+                  className="inline-flex items-center justify-center border px-4 py-2 text-[11px] tracking-[0.18em] text-black transition-colors hover:bg-black hover:!text-white"
+                  style={{
+                    borderColor: `${accent}cc`,
+                    backgroundImage: `repeating-linear-gradient(135deg, ${accent}14 0 6px, transparent 6px 12px)`,
+                  }}
+                >
+                  {section.title.toUpperCase()}
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>

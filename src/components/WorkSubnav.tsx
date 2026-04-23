@@ -23,7 +23,7 @@ export function WorkSubnav() {
         const isActive = pathname === link.href;
         const accent = link.sectionKey ? workSectionAccents[link.sectionKey] : null;
 
-        const className = isActive ? "border px-3 py-2 font-black" : "border px-3 py-2 transition-colors";
+        const className = isActive ? "border px-3 py-2 font-black" : "border px-3 py-2 transition-colors hover:font-black";
 
         const style = isActive
           ? accent
@@ -32,7 +32,11 @@ export function WorkSubnav() {
                 color: "rgba(255,255,255,0.92)",
                 backgroundImage: `repeating-linear-gradient(135deg, ${accent}33 0 8px, transparent 8px 16px)`,
               }
-            : { backgroundColor: "#ffffff", borderColor: "#ffffff", color: "#000000" }
+            : {
+                borderColor: "#ffffff",
+                color: "rgba(255,255,255,0.92)",
+                backgroundImage: "repeating-linear-gradient(135deg, #ffffff33 0 8px, transparent 8px 16px)",
+              }
           : accent
             ? { borderColor: `${accent}99`, color: "rgba(255,255,255,0.8)" }
             : { borderColor: "rgba(255,255,255,0.5)", color: "rgba(255,255,255,0.8)" };
