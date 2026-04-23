@@ -155,7 +155,7 @@ export const workSections: Record<WorkSectionKey, WorkSection> = {
         summary:
           "A focused montage showcasing campaign-ready print assets across flyer design, business cards, and large-format roller banners.",
         disciplines: "Print Design, Marketing Collateral, Large Format",
-        imagePath: "/print ads/flyers-business-cards-roller-banners-v3.jpg",
+        imagePath: "/print ads/flyers-business-cards-roller-banners-v6.jpg",
         source: "pdf",
       },
       {

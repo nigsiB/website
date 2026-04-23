@@ -29,7 +29,10 @@ class NodeCanvasFactory {
   }
 }
 
-async function renderPage(pdf, pageNumber, scale = 1.2) {
+// 150dpi render scale relative to PDF default 72dpi.
+const PDF_RENDER_SCALE = 150 / 72;
+
+async function renderPage(pdf, pageNumber, scale = PDF_RENDER_SCALE) {
   const page = await pdf.getPage(pageNumber);
   const viewport = page.getViewport({ scale });
   const canvasFactory = new NodeCanvasFactory();
@@ -41,7 +44,7 @@ async function renderPage(pdf, pageNumber, scale = 1.2) {
     canvasFactory,
   }).promise;
 
-  return canvas.toBuffer("image/jpeg", 85);
+  return canvas.toBuffer("image/jpeg", 92);
 }
 
 async function run() {
