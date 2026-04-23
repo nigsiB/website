@@ -43,7 +43,7 @@ export const workSections: Record<WorkSectionKey, WorkSection> = {
     key: "branding",
     title: "Branding",
     intro:
-      "Identity systems from logo exploration to applied campaign assets, presented as a curated archive of brand work.",
+      "Identity systems built from the inside out - uncovering client values, translating them into strong visual language, and carrying that through from logo development to brand guidelines and applied campaign assets.",
     items: [
       {
         title: "Brand Design: Client (Various)",

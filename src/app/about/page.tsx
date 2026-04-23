@@ -142,8 +142,9 @@ export default function AboutPage() {
               I am evolving as a creative, utilising AI systems, image and video generation, and modern coding workflows to stay
               current with the latest tools while moving from concept to polished output at pace.
             </p>
-            <p className="mt-4 text-xs leading-relaxed text-white/80">
-              Recognition: Awards include - IVCA Gold, IVCA Silver, MIMA Silver, and NMA B2B Effectiveness.
+            <p className="mt-4 text-[10px] tracking-[0.3em] text-white/70">RECOGNITION</p>
+            <p className="mt-2 text-xs leading-relaxed text-white/80">
+              Awards include IVCA Gold, IVCA Silver, MIMA Silver, and NMA B2B Effectiveness.
             </p>
           </article>
         </div>
