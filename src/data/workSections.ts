@@ -46,6 +46,15 @@ export const workSections: Record<WorkSectionKey, WorkSection> = {
       "Identity systems built from the inside out - uncovering client values, translating them into strong visual language, and carrying that through from logo development to brand guidelines and applied campaign assets.",
     items: [
       {
+        title: "WRA Official",
+        summary:
+          "Brand identity direction and digital presence for WRA Official, built around a clear personal brand voice across advocacy, speaking, and media.",
+        disciplines: "Brand Identity, Art Direction, Personal Brand Strategy",
+        imagePath: "/branding-wra-logo-centered.jpg",
+        source: "live",
+        url: "https://wra-official.com",
+      },
+      {
         title: "Brand Design: Client (Various)",
         summary:
           "A broad set of logo studies translating client values into clear visual language across different sectors.",
