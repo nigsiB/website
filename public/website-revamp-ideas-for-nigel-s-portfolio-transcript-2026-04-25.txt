@@ -1,0 +1,128 @@
+# Website Revamp Ideas for Nigel's Portfolio 🌐
+Date: 2026-04-25
+
+---
+
+
+John Chipps-Harding:
+[00:00:00 - 00:00:12] Okay, so I'm recording right now and um basically uh what we're gonna describe is changes to Nigel Burk Burt's website.
+[00:00:12 - 00:00:15] It looks like he's got nigsyb.com, is that right Nigel?
+
+Nigel Burt:
+[00:00:15 - 00:00:16] That's correct, yeah.
+
+John Chipps-Harding:
+[00:00:17 - 00:00:18] Ooh, nice.
+[00:00:18 - 00:00:22] So um when did you buy that?
+
+Nigel Burt:
+[00:00:22 - 00:00:24] Uh middle of last week.
+
+John Chipps-Harding:
+[00:00:25 - 00:00:27] And what was your host thing?
+
+Nigel Burt:
+[00:00:27 - 00:00:31] Uh fast uh it's Reg123.
+
+John Chipps-Harding:
+[00:00:32 - 00:00:34] And how are you building and deploying this?
+[00:00:34 - 00:00:48] Is it is this a uh It's a cursor project um uh served on GitHub, stored on GitHub and served uh using versal.
+[00:00:49 - 00:00:51] But when you say a cursor project, is it React?
+
+Nigel Burt:
+[00:00:52 - 00:00:53] Oh it's React, yes.
+
+John Chipps-Harding:
+[00:00:54 - 00:00:55] Is it?
+[00:00:55 - 00:00:56] I think so, yeah.
+[00:00:59 - 00:01:00] Okay, interesting.
+[00:01:01 - 00:01:04] Sorry, is it you deployed using versal?
+[00:01:04 - 00:01:05] Yeah.
+[00:01:05 - 00:01:08] Okay, so your name your domain name is with who?
+
+Nigel Burt:
+[00:01:08 - 00:01:10] Reg123.
+
+John Chipps-Harding:
+[00:01:10 - 00:01:11] Okay, okay, I got you.
+[00:01:11 - 00:01:13] The domain name is with Reg123.
+
+Nigel Burt:
+[00:01:13 - 00:01:15] But it's pointing at the cells.
+
+John Chipps-Harding:
+[00:01:15 - 00:01:16] Boom.
+[00:01:16 - 00:01:17] Perfect, perfect.
+[00:01:17 - 00:01:19] Now that's that's all done well again.
+[00:01:19 - 00:01:20] I'm proud of you, Nigel.
+[00:01:24 - 00:01:27] And what did you what would you what we were going to do?
+
+Nigel Burt:
+[00:01:28 - 00:01:29] You had an idea.
+
+John Chipps-Harding:
+[00:01:30 - 00:01:43] Oh yeah, so I've got an idea of um because it there's not too much content per uh portfolio piece, there's no like detail pages or anything.
+[00:01:43 - 00:01:49] But they could like take up a whole screen if they're like displayed nicely.
+[00:01:49 - 00:01:56] And I've always wanted to do a user interface where you're always looking at full screen image.
+[00:01:56 - 00:02:03] A portfolio piece, which is basically an image with some titles somewhere, maybe split half.
+[00:02:03 - 00:02:06] You might have different templates or something.
+[00:02:08 - 00:02:16] Um and you and you would and you would pres you'd present the two axes of movement, okay.
+[00:02:16 - 00:02:21] So imagine if you had all your portfolio in a grid.
+[00:02:23 - 00:02:34] So in a column, you'll have like branding at the top, interactive, da da da da da da da, all your different disciplines like packaging, ideation as a phase, and stuff like that.
+[00:02:34 - 00:02:37] You'd have quite a few different categories.
+[00:02:38 - 00:02:51] Um but then left and right, you'd have like more portfolio pieces, but there'd be um so there'd there'd be crossover types.
+[00:02:51 - 00:02:56] Yeah, so you can go left and right and look at different um ideation projects that you've done.
+[00:02:57 - 00:03:05] You can go down, down, down, you land on a website, and then you go left and right, you can look at the the other websites that you've built.
+[00:03:05 - 00:03:13] And if you're on a one of another website you've built, you can go up up and see if you've done like the the branding for it.
+[00:03:14 - 00:03:18] Um say the idea is it's like you've got this grid of portfolio.
+[00:03:20 - 00:03:24] It's like you've got this grid portfolio in front of you.
+[00:03:25 - 00:03:30] And most of the 99.9% of the time you're looking at just like one zoomed in.
+[00:03:31 - 00:03:40] You might you might see others to the side maybe, because yeah, you'd have others to the side, you'd actually have them as okay.
+[00:03:40 - 00:03:50] Each portfolio item at its max size will probably be like 80% the size of the browser of the browser.
+[00:04:01 - 00:04:08] And you can just see the other ones peeking off to the side, and you can always like pull out a more of a map view.
+
+Nigel Burt:
+[00:04:08 - 00:04:08] Yeah, yeah.
+
+John Chipps-Harding:
+[00:04:09 - 00:04:10] Zoom back down.
+
+Nigel Burt:
+[00:04:10 - 00:04:11] Be nice to zoom out.
+
+John Chipps-Harding:
+[00:04:11 - 00:04:16] So there's it's almost like you've got a site map view where you can see everything a bit more.
+[00:04:16 - 00:04:21] So and you can see the columns a bit more defined with type column titles appearing.
+[00:04:21 - 00:04:22] Just pause it so.
+[00:04:24 - 00:04:32] Yeah, so I don't think it needs to be WebGL.
+[00:04:33 - 00:04:36] I think it can be just standard CSS transforms and stuff.
+
+Nigel Burt:
+[00:04:37 - 00:04:38] That was my next question, actually.
+
+John Chipps-Harding:
+[00:04:38 - 00:04:48] Um yeah, so when you go left and right, it'll sort of like zoom out slightly as it pans and zoom back in, up, down.
+[00:04:48 - 00:04:50] Um just to give it a few.
+[00:04:50 - 00:05:02] You'd have fixed elements, so probably fix on top of like the stuff sliding around would actually be like on the top left, uh, the brand name.
+
+Nigel Burt:
+[00:05:02 - 00:05:03] Yeah, yeah.
+
+John Chipps-Harding:
+[00:05:03 - 00:05:08] Basically the client and the um the discipline.
+[00:05:09 - 00:05:14] So as you're going left and right, you'll be seeing like the um Are you talking about layers?
+[00:05:15 - 00:05:20] Yeah, you'd have you'd have like um so it'd just be fixed on on the browser on the top left.
+
+Nigel Burt:
+[00:05:21 - 00:05:21] Yeah.
+
+John Chipps-Harding:
+[00:05:21 - 00:05:28] So when you go left and right, like um the the background is Well as as it rolls over, it would change up the top left.
+[00:05:33 - 00:05:37] Yeah, just on the top left, it would just basically change.
+[00:05:38 - 00:05:46] So as you go left and right, just the uh brand names will change, but when you go up and down up and down the brand name will the disciplines will change.
+[00:05:47 - 00:05:47] Yeah, wicked.
+[00:05:48 - 00:05:50] So you'll instantly recognize what's going on.
+[00:05:51 - 00:06:02] Um and also pr add make it so that when you first visit the site and remember it on a cookie, show like a little modal window which it just explains it a little bit with a little diagram.
+
+Nigel Burt:
+[00:06:02 - 00:06:05] Nice touch, yeah, wicked.
