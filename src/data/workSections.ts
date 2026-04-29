@@ -9,6 +9,7 @@ export type WorkItem = {
   summary: string;
   disciplines: string;
   imagePath: string;
+  slideshowImages?: string[];
   source: "pdf" | "live";
   url?: string;
 };
@@ -55,6 +56,23 @@ export const workSections: Record<WorkSectionKey, WorkSection> = {
         url: "https://wra-official.com",
       },
       {
+        title: "EDN Management",
+        summary:
+          "Built a dual-mode identity and website direction for EDN Management, using Angel/Demon theming, cinematic contrast, and service-led messaging for a female-led talent management proposition.",
+        disciplines: "Brand Identity, UI Theme Systems, Art Direction",
+        imagePath: "/EDN/light/home_01.jpg",
+        slideshowImages: [
+          "/EDN/light/home_01.jpg",
+          "/EDN/light/home_02.jpg",
+          "/EDN/light/home_03.jpg",
+          "/EDN/dark/home_01-2.jpg",
+          "/EDN/dark/home_02-2.jpg",
+          "/EDN/dark/home_03-2.jpg",
+        ],
+        source: "live",
+        url: "https://ednmanagement.com",
+      },
+      {
         title: "Brand Design: Client (Various)",
         summary:
           "A broad set of logo studies translating client values into clear visual language across different sectors.",
@@ -94,6 +112,23 @@ export const workSections: Record<WorkSectionKey, WorkSection> = {
     intro: "From my latest live sites to standout campaign builds from earlier eras, this is web and interactive work engineered to perform and built to be remembered.",
     items: [
       ...webFromLiveWithoutTrueCanna,
+      {
+        title: "EDN Management",
+        summary:
+          "Website design and frontend delivery for EDN Management featuring an Angel/Demon toggle, light and dark mode storytelling, and structured service communication across management, content, and network support.",
+        disciplines: "Web Design, UX/UI, Frontend Delivery",
+        imagePath: "/EDN/light/home_01.jpg",
+        slideshowImages: [
+          "/EDN/light/home_01.jpg",
+          "/EDN/light/home_02.jpg",
+          "/EDN/light/home_03.jpg",
+          "/EDN/dark/home_01-2.jpg",
+          "/EDN/dark/home_02-2.jpg",
+          "/EDN/dark/home_03-2.jpg",
+        ],
+        source: "live",
+        url: "https://ednmanagement.com",
+      },
       {
         title: "Panasonic VS3 Pan-European Launch",
         summary:
