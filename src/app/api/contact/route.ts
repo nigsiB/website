@@ -5,7 +5,6 @@ type ContactPayload = {
   email?: string;
   subject?: string;
   message?: string;
-  company?: string;
 };
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -29,12 +28,6 @@ export async function POST(request: Request) {
     payload = (await request.json()) as ContactPayload;
   } catch {
     return NextResponse.json({ error: "Invalid request payload." }, { status: 400 });
-  }
-
-  const company = asTrimmedString(payload.company);
-  if (company) {
-    // Honeypot: silently accept bot submissions.
-    return NextResponse.json({ ok: true });
   }
 
   const name = asTrimmedString(payload.name);
