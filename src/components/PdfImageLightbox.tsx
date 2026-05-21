@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type MouseEvent as ReactMouseEvent } from "react";
+import { useCallback, useEffect, useRef, useState, type MouseEvent as ReactMouseEvent } from "react";
 import Image from "next/image";
 
 type PdfImageLightboxProps = {
@@ -8,6 +8,8 @@ type PdfImageLightboxProps = {
   alt: string;
   sizes?: string;
 };
+
+const DEFAULT_TRANSFORM = "translate3d(0px, 0px, 0px) scale(1)";
 
 export function PdfImageLightbox({ src, alt, sizes }: PdfImageLightboxProps) {
   const [open, setOpen] = useState(false);
@@ -26,41 +28,48 @@ export function PdfImageLightbox({ src, alt, sizes }: PdfImageLightboxProps) {
     startOffsetY: 0,
   });
 
-  const applyTransform = () => {
+  const resetPan = useCallback(() => {
+    offsetRef.current = { x: 0, y: 0 };
+    if (panLayerRef.current) {
+      panLayerRef.current.style.transform = DEFAULT_TRANSFORM;
+    }
+  }, []);
+
+  const applyTransform = useCallback(() => {
     if (!panLayerRef.current) return;
     panLayerRef.current.style.transform = zoomed
       ? `translate3d(${offsetRef.current.x}px, ${offsetRef.current.y}px, 0) scale(1.7)`
-      : "translate3d(0px, 0px, 0px) scale(1)";
-  };
+      : DEFAULT_TRANSFORM;
+  }, [zoomed]);
+
+  const closeLightbox = useCallback(() => {
+    dragRef.current.active = false;
+    setOpen(false);
+    setZoomed(false);
+    setIsPanning(false);
+    resetPan();
+  }, [resetPan]);
 
   useEffect(() => {
     if (!open) return;
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setOpen(false);
+        closeLightbox();
       }
     };
 
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [open]);
-
-  useEffect(() => {
-    if (!open) {
-      setZoomed(false);
-      setIsPanning(false);
-      offsetRef.current = { x: 0, y: 0 };
-      applyTransform();
-    }
-  }, [open]);
+  }, [closeLightbox, open]);
 
   useEffect(() => {
     if (!zoomed) {
-      offsetRef.current = { x: 0, y: 0 };
+      resetPan();
+      return;
     }
     applyTransform();
-  }, [open, zoomed]);
+  }, [applyTransform, resetPan, zoomed]);
 
   const onPanStart = (event: ReactMouseEvent<HTMLButtonElement>) => {
     if (!zoomed) return;
@@ -77,7 +86,7 @@ export function PdfImageLightbox({ src, alt, sizes }: PdfImageLightboxProps) {
     setIsPanning(true);
   };
 
-  const onPanMove = (event: globalThis.MouseEvent) => {
+  const onPanMove = useCallback((event: globalThis.MouseEvent) => {
     if (!dragRef.current.active) return;
     const dx = event.clientX - dragRef.current.startX;
     const dy = event.clientY - dragRef.current.startY;
@@ -95,12 +104,12 @@ export function PdfImageLightbox({ src, alt, sizes }: PdfImageLightboxProps) {
         rafRef.current = null;
       });
     }
-  };
+  }, [applyTransform]);
 
-  const onPanEnd = () => {
+  const onPanEnd = useCallback(() => {
     dragRef.current.active = false;
     setIsPanning(false);
-  };
+  }, []);
 
   useEffect(() => {
     if (!isPanning) return;
@@ -114,7 +123,7 @@ export function PdfImageLightbox({ src, alt, sizes }: PdfImageLightboxProps) {
       window.removeEventListener("mousemove", handleMove);
       window.removeEventListener("mouseup", handleEnd);
     };
-  }, [isPanning]);
+  }, [isPanning, onPanEnd, onPanMove]);
 
   useEffect(
     () => () => {
@@ -148,11 +157,11 @@ export function PdfImageLightbox({ src, alt, sizes }: PdfImageLightboxProps) {
           role="dialog"
           aria-modal="true"
           aria-label={alt}
-          onClick={() => setOpen(false)}
+          onClick={closeLightbox}
         >
           <button
             type="button"
-            onClick={() => setOpen(false)}
+            onClick={closeLightbox}
             className="absolute right-4 top-4 z-20 border border-white/70 bg-black/55 px-3 py-1 text-xs tracking-[0.2em] text-white hover:bg-white hover:text-black md:right-8 md:top-8"
             aria-label="Close fullscreen image"
           >
@@ -164,8 +173,7 @@ export function PdfImageLightbox({ src, alt, sizes }: PdfImageLightboxProps) {
               onClick={(event) => {
                 event.stopPropagation();
                 setZoomed(false);
-                offsetRef.current = { x: 0, y: 0 };
-                applyTransform();
+                resetPan();
               }}
               className="absolute left-4 top-4 z-20 border border-white/70 bg-black/55 px-3 py-1 text-xs tracking-[0.2em] text-white hover:bg-white hover:text-black md:left-8 md:top-8"
               aria-label="Zoom out image"
