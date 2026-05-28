@@ -82,12 +82,6 @@ export function PdfImageLightbox({ src, alt, sizes }: PdfImageLightboxProps) {
   }, [closeLightbox, open]);
 
   useEffect(() => {
-    if (!open) {
-      resetZoom();
-    }
-  }, [open, resetZoom]);
-
-  useEffect(() => {
     if (!zoomed) {
       cancelPendingTransform();
       offsetRef.current = { x: 0, y: 0 };
