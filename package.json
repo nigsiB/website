@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "test": "node --import tsx --test src/app/api/contact/route.test.ts",
     "lint": "eslint",
     "screenshots": "tsx scripts/capture-screenshots.ts",
     "screenshots:playwright": "SCREENSHOT_PROVIDER=playwright tsx scripts/capture-screenshots.ts",
