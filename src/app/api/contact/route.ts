@@ -6,6 +6,7 @@ type ContactPayload = {
   subject?: string;
   message?: string;
   company?: string;
+  _contact_hp?: string;
 };
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -31,8 +32,8 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid request payload." }, { status: 400 });
   }
 
-  const company = asTrimmedString(payload.company);
-  if (company) {
+  const honeypot = asTrimmedString(payload._contact_hp);
+  if (honeypot) {
     // Honeypot: silently accept bot submissions.
     return NextResponse.json({ ok: true });
   }
@@ -61,7 +62,7 @@ export async function POST(request: Request) {
       to: [toEmail],
       reply_to: email,
       subject: `Website enquiry: ${subject}`,
-      text: `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\n\nMessage:\n${message}`,
+      text: `Name: ${name}\nEmail: ${email}\nCompany: ${asTrimmedString(payload.company) || "Not provided"}\nSubject: ${subject}\n\nMessage:\n${message}`,
     }),
   });
 
