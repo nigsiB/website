@@ -5,6 +5,7 @@ type ContactPayload = {
   email?: string;
   subject?: string;
   message?: string;
+  _contact_hp?: string;
   company?: string;
 };
 
@@ -31,8 +32,8 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid request payload." }, { status: 400 });
   }
 
-  const company = asTrimmedString(payload.company);
-  if (company) {
+  const honeypot = asTrimmedString(payload._contact_hp);
+  if (honeypot) {
     // Honeypot: silently accept bot submissions.
     return NextResponse.json({ ok: true });
   }
@@ -41,6 +42,7 @@ export async function POST(request: Request) {
   const email = asTrimmedString(payload.email);
   const subject = asTrimmedString(payload.subject);
   const message = asTrimmedString(payload.message);
+  const company = asTrimmedString(payload.company);
 
   if (!name || !email || !subject || !message) {
     return NextResponse.json({ error: "Please complete all required fields." }, { status: 400 });
@@ -61,7 +63,7 @@ export async function POST(request: Request) {
       to: [toEmail],
       reply_to: email,
       subject: `Website enquiry: ${subject}`,
-      text: `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\n\nMessage:\n${message}`,
+      text: `Name: ${name}\nEmail: ${email}${company ? `\nCompany: ${company}` : ""}\nSubject: ${subject}\n\nMessage:\n${message}`,
     }),
   });
 
