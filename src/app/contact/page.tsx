@@ -20,7 +20,7 @@ export default function ContactPage() {
       email: String(formData.get("email") ?? "").trim(),
       subject: String(formData.get("subject") ?? "").trim(),
       message: String(formData.get("message") ?? "").trim(),
-      company: String(formData.get("company") ?? "").trim(),
+      _contact_hp: String(formData.get("_contact_hp") ?? "").trim(),
     };
 
     try {
@@ -59,9 +59,9 @@ export default function ContactPage() {
         <form className="mt-8 grid gap-4 md:max-w-3xl" onSubmit={handleSubmit}>
           <input
             type="text"
-            name="company"
+            name="_contact_hp"
             tabIndex={-1}
-            autoComplete="off"
+            autoComplete="new-password"
             className="hidden"
             aria-hidden="true"
           />
