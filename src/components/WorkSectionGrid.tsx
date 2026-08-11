@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import type { WorkSection } from "@/data/workSections";
+import { ImageSlideshowLightbox } from "@/components/ImageSlideshowLightbox";
 import { PdfImageLightbox } from "@/components/PdfImageLightbox";
 
 type WorkSectionGridProps = {
@@ -15,7 +16,13 @@ export function WorkSectionGrid({ section }: WorkSectionGridProps) {
         {section.items.map((item) => (
           <article key={`${section.key}-${item.title}`} className="group border border-white/35 bg-black">
             <div className="relative aspect-[16/10] overflow-hidden border-b border-white/30">
-              {item.source === "pdf" ? (
+              {item.slideshowImages?.length ? (
+                <ImageSlideshowLightbox
+                  images={item.slideshowImages}
+                  alt={`${item.title} project slideshow`}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              ) : item.source === "pdf" ? (
                 <PdfImageLightbox src={item.imagePath} alt={`${item.title} portfolio visual`} sizes="(max-width: 768px) 100vw, 50vw" />
               ) : (
                 <>
@@ -45,16 +52,6 @@ export function WorkSectionGrid({ section }: WorkSectionGridProps) {
               <h3 className="text-2xl text-white">{item.title}</h3>
               <p className="text-xs leading-relaxed text-white/80">{item.summary}</p>
               <p className="text-[10px] tracking-[0.16em] text-white/60">{item.disciplines.toUpperCase()}</p>
-              {item.source === "live" && item.url ? (
-                <a
-                  href={item.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex min-w-[10rem] items-center justify-center border border-white px-3 py-1.5 text-xs tracking-[0.12em] !text-white visited:!text-white transition-colors duration-200 hover:bg-white hover:!text-black"
-                >
-                  VISIT LIVE SITE
-                </a>
-              ) : null}
             </div>
           </article>
         ))}
