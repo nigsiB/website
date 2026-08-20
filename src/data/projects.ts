@@ -43,8 +43,9 @@ export const projects: PortfolioProject[] = [
       "/WRA/02-the-book.webp",
       "/WRA/03-the-truth.webp",
       "/WRA/04-the-past.webp",
-      "/WRA/05-membership.webp",
-      "/WRA/06-contact.webp",
+      "/WRA/05-timeline.webp",
+      "/WRA/06-membership.webp",
+      "/WRA/07-contact.webp",
     ],
   },
   {
