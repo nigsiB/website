@@ -26,6 +26,7 @@ export function WorkSectionGrid({ section }: WorkSectionGridProps) {
                   images={item.slideshowImages}
                   alt={`${item.title} project slideshow`}
                   sizes="(max-width: 768px) 100vw, 50vw"
+                  openOnHash={slugifyTitle(item.title)}
                 />
               ) : item.source !== "live" ? (
                 <PdfImageLightbox
@@ -33,6 +34,7 @@ export function WorkSectionGrid({ section }: WorkSectionGridProps) {
                   alt={`${item.title} portfolio visual`}
                   sizes="(max-width: 768px) 100vw, 50vw"
                   overlayLabel={item.source === "archived" ? "VIEW PROJECT" : undefined}
+                  openOnHash={slugifyTitle(item.title)}
                 />
               ) : (
                 <>

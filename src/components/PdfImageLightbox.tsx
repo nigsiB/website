@@ -12,6 +12,8 @@ type PdfImageLightboxProps = {
   /** Optional controlled mode, so a sibling CTA can open the same lightbox. */
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
+  /** Card anchor id. Arriving at /work/...#<id> opens this lightbox straight away. */
+  openOnHash?: string;
 };
 
 export function PdfImageLightbox({
@@ -21,6 +23,7 @@ export function PdfImageLightbox({
   overlayLabel,
   open: openProp,
   onOpenChange,
+  openOnHash,
 }: PdfImageLightboxProps) {
   const [uncontrolledOpen, setUncontrolledOpen] = useState(false);
   const open = openProp ?? uncontrolledOpen;
@@ -28,6 +31,30 @@ export function PdfImageLightbox({
     setUncontrolledOpen(next);
     onOpenChange?.(next);
   };
+
+  // Deep link support: /work/web-interactive#g-vape lands on the card and opens
+  // it. Deferred a frame so the browser scrolls to the anchor first.
+  useEffect(() => {
+    if (!openOnHash) return;
+
+    const openIfTargeted = () => {
+      if (window.location.hash === `#${openOnHash}`) {
+        setUncontrolledOpen(true);
+        onOpenChange?.(true);
+      }
+    };
+
+    const frame = window.requestAnimationFrame(openIfTargeted);
+    window.addEventListener("hashchange", openIfTargeted);
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("hashchange", openIfTargeted);
+    };
+    // onOpenChange is a stable prop in practice; re-running on identity churn
+    // would reopen the lightbox after the user closed it.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [openOnHash]);
   const [zoomed, setZoomed] = useState(false);
   const [isPanning, setIsPanning] = useState(false);
   const isPdf = src.toLowerCase().endsWith(".pdf");

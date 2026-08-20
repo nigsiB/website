@@ -7,9 +7,11 @@ type ImageSlideshowLightboxProps = {
   images: string[];
   alt: string;
   sizes?: string;
+  /** Card anchor id. Arriving at /work/...#<id> opens this lightbox straight away. */
+  openOnHash?: string;
 };
 
-export function ImageSlideshowLightbox({ images, alt, sizes }: ImageSlideshowLightboxProps) {
+export function ImageSlideshowLightbox({ images, alt, sizes, openOnHash }: ImageSlideshowLightboxProps) {
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
   const total = images.length;
@@ -22,6 +24,27 @@ export function ImageSlideshowLightbox({ images, alt, sizes }: ImageSlideshowLig
   const goNext = useCallback(() => {
     setIndex((current) => (current + 1) % total);
   }, [total]);
+
+  // Deep link support: /work/web-interactive#kdc-exclusive lands on the card and
+  // opens it. Deferred a frame so the browser scrolls to the anchor first.
+  useEffect(() => {
+    if (!openOnHash) return;
+
+    const openIfTargeted = () => {
+      if (window.location.hash === `#${openOnHash}`) {
+        setIndex(0);
+        setOpen(true);
+      }
+    };
+
+    const frame = window.requestAnimationFrame(openIfTargeted);
+    window.addEventListener("hashchange", openIfTargeted);
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("hashchange", openIfTargeted);
+    };
+  }, [openOnHash]);
 
   useEffect(() => {
     if (!open) return;
