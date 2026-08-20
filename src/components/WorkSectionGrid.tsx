@@ -3,6 +3,7 @@ import Image from "next/image";
 import type { WorkSection } from "@/data/workSections";
 import { ImageSlideshowLightbox } from "@/components/ImageSlideshowLightbox";
 import { PdfImageLightbox } from "@/components/PdfImageLightbox";
+import { slugifyTitle } from "@/lib/slugify";
 
 type WorkSectionGridProps = {
   section: WorkSection;
@@ -14,7 +15,11 @@ export function WorkSectionGrid({ section }: WorkSectionGridProps) {
       <p className="max-w-3xl text-sm leading-relaxed text-white/75">{section.intro}</p>
       <div className="mt-8 grid gap-6 md:grid-cols-2">
         {section.items.map((item) => (
-          <article key={`${section.key}-${item.title}`} className="group border border-white/35 bg-black">
+          <article
+            key={`${section.key}-${item.title}`}
+            id={slugifyTitle(item.title)}
+            className="group scroll-mt-8 border border-white/35 bg-black"
+          >
             <div className="relative aspect-[16/10] overflow-hidden border-b border-white/30">
               {item.slideshowImages?.length ? (
                 <ImageSlideshowLightbox
@@ -22,8 +27,13 @@ export function WorkSectionGrid({ section }: WorkSectionGridProps) {
                   alt={`${item.title} project slideshow`}
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
-              ) : item.source === "pdf" ? (
-                <PdfImageLightbox src={item.imagePath} alt={`${item.title} portfolio visual`} sizes="(max-width: 768px) 100vw, 50vw" />
+              ) : item.source !== "live" ? (
+                <PdfImageLightbox
+                  src={item.imagePath}
+                  alt={`${item.title} portfolio visual`}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  overlayLabel={item.source === "archived" ? "VIEW PROJECT" : undefined}
+                />
               ) : (
                 <>
                   <Image
@@ -48,7 +58,7 @@ export function WorkSectionGrid({ section }: WorkSectionGridProps) {
               )}
             </div>
             <div className="space-y-3 p-5">
-              <p className="text-[10px] tracking-[0.3em] text-white/70">{item.source === "pdf" ? "ARCHIVE PROJECT" : "LIVE PROJECT"}</p>
+              <p className="text-[10px] tracking-[0.3em] text-white/70">{item.source === "live" ? "LIVE PROJECT" : "ARCHIVE PROJECT"}</p>
               <h3 className="text-2xl text-white">{item.title}</h3>
               <p className="text-xs leading-relaxed text-white/80">{item.summary}</p>
               <p className="text-[10px] tracking-[0.16em] text-white/60">{item.disciplines.toUpperCase()}</p>

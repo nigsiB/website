@@ -7,10 +7,27 @@ type PdfImageLightboxProps = {
   src: string;
   alt: string;
   sizes?: string;
+  /** Text revealed over the image on hover/focus, e.g. "VIEW PROJECT". */
+  overlayLabel?: string;
+  /** Optional controlled mode, so a sibling CTA can open the same lightbox. */
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
 };
 
-export function PdfImageLightbox({ src, alt, sizes }: PdfImageLightboxProps) {
-  const [open, setOpen] = useState(false);
+export function PdfImageLightbox({
+  src,
+  alt,
+  sizes,
+  overlayLabel,
+  open: openProp,
+  onOpenChange,
+}: PdfImageLightboxProps) {
+  const [uncontrolledOpen, setUncontrolledOpen] = useState(false);
+  const open = openProp ?? uncontrolledOpen;
+  const setOpen = (next: boolean) => {
+    setUncontrolledOpen(next);
+    onOpenChange?.(next);
+  };
   const [zoomed, setZoomed] = useState(false);
   const [isPanning, setIsPanning] = useState(false);
   const isPdf = src.toLowerCase().endsWith(".pdf");
@@ -138,7 +155,14 @@ export function PdfImageLightbox({ src, alt, sizes }: PdfImageLightboxProps) {
             OPEN PDF PREVIEW
           </span>
         ) : (
-          <Image src={src} alt={alt} fill className="bg-black object-contain object-top" sizes={sizes} />
+          <>
+            <Image src={src} alt={alt} fill className="bg-black object-contain object-top" sizes={sizes} />
+            {overlayLabel ? (
+              <span className="absolute inset-0 flex items-center justify-center bg-black/0 text-sm font-black tracking-[0.24em] text-white/90 opacity-0 transition-all duration-200 group-hover:bg-black/35 group-hover:opacity-100 group-focus-visible:bg-black/35 group-focus-visible:opacity-100">
+                {overlayLabel}
+              </span>
+            ) : null}
+          </>
         )}
       </button>
 

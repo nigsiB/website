@@ -10,7 +10,12 @@ export type WorkItem = {
   disciplines: string;
   imagePath: string;
   slideshowImages?: string[];
-  source: "pdf" | "live";
+  /**
+   * "live"     - site is up; card links out to it.
+   * "pdf"      - imagery rendered from the archive PDF.
+   * "archived" - site is gone; presented from its captured screenshot, no link.
+   */
+  source: "pdf" | "live" | "archived";
   url?: string;
 };
 
@@ -28,14 +33,19 @@ export const workSectionAccents: Record<WorkSectionKey, string> = {
   exhibition: "#7ecf5f",
 };
 
-const webFromLive: WorkItem[] = projects.map((project) => ({
-  title: project.title,
-  summary: project.description,
-  disciplines: "Web Design, UX/UI, Frontend Delivery",
-  imagePath: `/screenshots/${slugifyUrl(project.url)}.png`,
-  source: "live",
-  url: project.url,
-}));
+const webFromLive: WorkItem[] = projects.map((project) => {
+  const base = {
+    title: project.title,
+    summary: project.description,
+    disciplines: "Web Design, UX/UI, Frontend Delivery",
+    imagePath: `/screenshots/${slugifyUrl(project.url)}.png`,
+  };
+
+  // Archived projects keep their captured screenshot but lose the outbound link.
+  return project.archived
+    ? { ...base, slideshowImages: project.slideshowImages, source: "archived" as const }
+    : { ...base, source: "live" as const, url: project.url };
+});
 const trueCannaLiveItem = webFromLive.find((item) => item.title === "True Canna Genetics");
 const webFromLiveWithoutTrueCanna = webFromLive.filter((item) => item.title !== "True Canna Genetics");
 
@@ -52,8 +62,8 @@ export const workSections: Record<WorkSectionKey, WorkSection> = {
           "Brand identity direction and digital presence for WRA Official, built around a clear personal brand voice across advocacy, speaking, and media.",
         disciplines: "Brand Identity, Art Direction, Personal Brand Strategy",
         imagePath: "/branding-wra-logo-centered.jpg",
-        source: "live",
-        url: "https://wra-official.com",
+        slideshowImages: ["/branding-wra-logo-centered.jpg", "/screenshots/wra-official-com.png"],
+        source: "archived",
       },
       {
         title: "EDN Management",

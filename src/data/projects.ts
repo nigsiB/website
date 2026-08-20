@@ -5,6 +5,17 @@ export type PortfolioProject = {
   category: string;
   device: "desktop" | "tablet" | "mobile";
   latest?: boolean;
+  /**
+   * The live site is no longer reachable, so the project is presented from its
+   * captured screenshot only: no outbound links, and `npm run screenshots`
+   * skips it so the existing capture is never overwritten with a placeholder.
+   */
+  archived?: boolean;
+  /**
+   * Extra imagery for the /work case study, shown as a slideshow. The first
+   * entry should be the site screenshot. The homepage grid stays single-image.
+   */
+  slideshowImages?: string[];
 };
 
 export const projects: PortfolioProject[] = [
@@ -23,6 +34,18 @@ export const projects: PortfolioProject[] = [
     category: "Personal Brand",
     device: "desktop",
     latest: true,
+    archived: true,
+    slideshowImages: [
+      // Index 0 is the card thumbnail as well as the first slide - keep the
+      // original site screenshot here.
+      "/screenshots/wra-official-com.png",
+      "/WRA/01-mission.webp",
+      "/WRA/02-the-book.webp",
+      "/WRA/03-the-truth.webp",
+      "/WRA/04-the-past.webp",
+      "/WRA/05-membership.webp",
+      "/WRA/06-contact.webp",
+    ],
   },
   {
     url: "https://kdcexclusive.com",
@@ -31,6 +54,17 @@ export const projects: PortfolioProject[] = [
     category: "E-Commerce",
     device: "desktop",
     latest: true,
+    archived: true,
+    slideshowImages: [
+      // Index 0 is the card thumbnail as well as the first slide - keep the
+      // original site screenshot here.
+      "/screenshots/kdcexclusive-com.png",
+      "/KDC/01-about.webp",
+      "/KDC/02-necklace-story.webp",
+      "/KDC/03-collection.webp",
+      "/KDC/04-shop.webp",
+      "/KDC/05-contact.webp",
+    ],
   },
   {
     url: "https://www.montrosesolicitors.co.uk",

@@ -2,14 +2,20 @@
 
 import { useMemo, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 import type { PortfolioProject } from "@/data/projects";
+import { slugifyTitle } from "@/lib/slugify";
 
 type ProjectCardProps = {
   project: PortfolioProject;
   screenshotPath: string;
   compact?: boolean;
 };
+
+// Every project in this grid is a web build, so its case study lives on the
+// web-interactive page, anchored to the matching card.
+const caseStudyHref = (project: PortfolioProject) => `/work/web-interactive#${slugifyTitle(project.title)}`;
 
 export function ProjectCard({ project, screenshotPath, compact = false }: ProjectCardProps) {
   const placeholderSrc = useMemo(() => {
@@ -22,10 +28,14 @@ export function ProjectCard({ project, screenshotPath, compact = false }: Projec
   }, [project.url]);
 
   const [imageSrc, setImageSrc] = useState(screenshotPath);
-  const mediaClass = compact ? "relative aspect-[16/10] overflow-hidden" : "relative aspect-[16/10] overflow-hidden";
+  const isArchived = Boolean(project.archived);
+  const mediaClass = "relative aspect-[16/10] overflow-hidden";
   const bodyClass = compact ? "space-y-2 border-t border-white/35 p-3" : "space-y-3 border-t border-white/35 p-5";
   const titleClass = compact ? "text-lg text-white leading-tight" : "text-2xl text-white";
   const launchTextClass = compact ? "!text-white visited:!text-white" : "text-white/90 visited:text-white/90";
+  const overlayClass = `absolute inset-0 z-10 flex items-center justify-center bg-black/0 text-sm font-black tracking-[0.24em] ${launchTextClass} opacity-0 transition-all duration-200 hover:bg-black/35 hover:opacity-100 focus-visible:bg-black/35 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80`;
+  const ctaClass =
+    "inline-flex min-w-[7.5rem] items-center justify-center border border-white px-3 py-1.5 text-xs leading-none tracking-[0.12em] !text-white visited:!text-white transition-colors duration-200 hover:bg-white hover:!text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black active:bg-white/90 active:!text-black";
 
   return (
     <article className="group overflow-hidden rounded-none border border-white/45 bg-black">
@@ -40,30 +50,41 @@ export function ProjectCard({ project, screenshotPath, compact = false }: Projec
           onError={() => setImageSrc(placeholderSrc)}
           sizes="(max-width: 768px) 100vw, 50vw"
         />
-        <a
-          href={project.url}
-          target="_blank"
-          rel="noreferrer"
-          aria-label={`Launch ${project.title}`}
-          className={`absolute inset-0 z-10 flex items-center justify-center bg-black/0 text-sm font-black tracking-[0.24em] ${launchTextClass} opacity-0 transition-all duration-200 hover:bg-black/35 hover:opacity-100 focus-visible:bg-black/35 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80`}
-          style={compact ? { color: "#ffffff" } : undefined}
-        >
-          LAUNCH SITE
-        </a>
+        {isArchived ? (
+          <Link
+            href={caseStudyHref(project)}
+            aria-label={`View the ${project.title} case study`}
+            className={overlayClass}
+            style={compact ? { color: "#ffffff" } : undefined}
+          >
+            VIEW PROJECT
+          </Link>
+        ) : (
+          <a
+            href={project.url}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={`Launch ${project.title}`}
+            className={overlayClass}
+            style={compact ? { color: "#ffffff" } : undefined}
+          >
+            LAUNCH SITE
+          </a>
+        )}
       </div>
       <div className={bodyClass}>
         <p className="text-[10px] tracking-[0.3em] text-white/70">{project.category.toUpperCase()}</p>
         <h3 className={titleClass}>{project.title}</h3>
         <p className="text-xs leading-relaxed text-white/75">{project.description}</p>
-        <a
-          href={project.url}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex min-w-[7.5rem] items-center justify-center border border-white px-3 py-1.5 text-xs leading-none tracking-[0.12em] !text-white visited:!text-white transition-colors duration-200 hover:bg-white hover:!text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black active:bg-white/90 active:!text-black"
-          style={{ color: "#ffffff" }}
-        >
-          VISIT SITE
-        </a>
+        {isArchived ? (
+          <Link href={caseStudyHref(project)} className={ctaClass} style={{ color: "#ffffff" }}>
+            VIEW PROJECT
+          </Link>
+        ) : (
+          <a href={project.url} target="_blank" rel="noreferrer" className={ctaClass} style={{ color: "#ffffff" }}>
+            VISIT SITE
+          </a>
+        )}
       </div>
     </article>
   );

@@ -19,6 +19,11 @@ const slugify = (url: string) =>
     .replace(/^-+|-+$/g, "")
     .toLowerCase();
 
+// Archived projects have no reachable site left. Re-capturing them would only
+// replace a good historic screenshot with an error page or a placeholder, so
+// they are skipped and their existing files in public/screenshots are kept.
+const capturableProjects = projects.filter((project) => !project.archived);
+
 async function ensureDir() {
   await fs.mkdir(screenshotDir, { recursive: true });
 }
@@ -47,7 +52,7 @@ async function runPlaywrightCapture() {
       "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36",
   });
 
-  for (const project of projects) {
+  for (const project of capturableProjects) {
     const slug = slugify(project.url);
     const outputPath = path.join(screenshotDir, `${slug}.png`);
     const page = await context.newPage();
@@ -74,7 +79,7 @@ async function runPlaywrightCapture() {
 }
 
 async function runServiceCapture() {
-  for (const project of projects) {
+  for (const project of capturableProjects) {
     const slug = slugify(project.url);
     const outputPath = path.join(screenshotDir, `${slug}.png`);
 
