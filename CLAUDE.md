@@ -18,7 +18,7 @@ npm run screenshots:service    # force thum.io remote capture
 node scripts/extract-pdf-pages.mjs   # re-render selected PDF pages to public/portfolio-pdf/
 ```
 
-There is no test suite. `@playwright/test` is present only as the screenshot driver.
+`npm test` runs `tsx --test` over `*.test.ts` files; the only suite today is [src/app/api/contact/route.test.ts](src/app/api/contact/route.test.ts). `@playwright/test` is present only as the screenshot driver, not as a test runner.
 
 ## Local dev on this machine
 
@@ -76,7 +76,7 @@ Tailwind v4 via PostCSS only — no `tailwind.config`. Design tokens and the glo
 
 ## Contact form
 
-[src/app/api/contact/route.ts](src/app/api/contact/route.ts) posts directly to the Resend REST API (no SDK dependency). Requires `RESEND_API_KEY`; returns 500 when unset. It has a `company` honeypot field that silently returns `ok` for bots. See `.env.example`.
+[src/app/api/contact/route.ts](src/app/api/contact/route.ts) posts directly to the Resend REST API (no SDK dependency). Requires `RESEND_API_KEY`; returns 500 when unset. It has a `_contact_hp` honeypot field that silently returns `ok` for bots. The name matters: it was once called `company`, which browser autofill filled in for real visitors, so genuine enquiries were silently discarded. Do not rename it to anything autofill recognises. See `.env.example`.
 
 ## Repo notes
 
