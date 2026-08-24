@@ -62,7 +62,7 @@ export async function POST(request: Request) {
       from: fromEmail,
       to: [toEmail],
       reply_to: email,
-      subject: `Website enquiry: ${subject}`,
+      subject: `nigsib.com Website Enquiry: ${subject}`,
       text: [
         `Name: ${name}`,
         `Email: ${email}`,
