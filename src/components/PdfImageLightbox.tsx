@@ -33,7 +33,8 @@ export function PdfImageLightbox({
   };
 
   // Deep link support: /work/web-interactive#g-vape lands on the card and opens
-  // it. Deferred a frame so the browser scrolls to the anchor first.
+  // it. Deferred so the browser scrolls to the anchor first - via a timer rather
+  // than rAF, which never fires while the tab is in the background.
   useEffect(() => {
     if (!openOnHash) return;
 
@@ -44,11 +45,11 @@ export function PdfImageLightbox({
       }
     };
 
-    const frame = window.requestAnimationFrame(openIfTargeted);
+    const timer = window.setTimeout(openIfTargeted, 0);
     window.addEventListener("hashchange", openIfTargeted);
 
     return () => {
-      window.cancelAnimationFrame(frame);
+      window.clearTimeout(timer);
       window.removeEventListener("hashchange", openIfTargeted);
     };
     // onOpenChange is a stable prop in practice; re-running on identity churn

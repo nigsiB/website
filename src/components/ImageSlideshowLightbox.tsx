@@ -26,7 +26,8 @@ export function ImageSlideshowLightbox({ images, alt, sizes, openOnHash }: Image
   }, [total]);
 
   // Deep link support: /work/web-interactive#kdc-exclusive lands on the card and
-  // opens it. Deferred a frame so the browser scrolls to the anchor first.
+  // opens it. Deferred so the browser scrolls to the anchor first - via a timer
+  // rather than rAF, which never fires while the tab is in the background.
   useEffect(() => {
     if (!openOnHash) return;
 
@@ -37,11 +38,11 @@ export function ImageSlideshowLightbox({ images, alt, sizes, openOnHash }: Image
       }
     };
 
-    const frame = window.requestAnimationFrame(openIfTargeted);
+    const timer = window.setTimeout(openIfTargeted, 0);
     window.addEventListener("hashchange", openIfTargeted);
 
     return () => {
-      window.cancelAnimationFrame(frame);
+      window.clearTimeout(timer);
       window.removeEventListener("hashchange", openIfTargeted);
     };
   }, [openOnHash]);
