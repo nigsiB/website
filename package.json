@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "test": "tsx --test",
     "start": "next start",
     "lint": "eslint",
     "screenshots": "tsx scripts/capture-screenshots.ts",
