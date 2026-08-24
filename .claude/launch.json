@@ -1,0 +1,20 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "//": "Runs through WSL because cmd.exe cannot use this repo's UNC path. No --cd flag: wsl.exe inherits and translates the launcher's working directory. The PATH glob picks the highest installed nvm node, so no version is pinned, and it goes first so WSL's node wins over the Windows npm on /mnt/c.",
+      "name": "website-dev",
+      "runtimeExecutable": "wsl.exe",
+      "runtimeArgs": [
+        "-d",
+        "Ubuntu",
+        "--",
+        "bash",
+        "-lc",
+        "export PATH=\"$(ls -d $HOME/.nvm/versions/node/*/bin | sort -V | tail -1):$PATH\"; exec npm run dev -- -H 0.0.0.0 -p 3001"
+      ],
+      "port": 3001,
+      "autoPort": false
+    }
+  ]
+}

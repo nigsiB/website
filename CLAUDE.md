@@ -27,15 +27,20 @@ The repo lives on a WSL filesystem reached from Windows over a UNC path (`\wsl.l
 - **Anything that shells out through `cmd.exe` fails.** It rejects UNC working directories, silently falls back to `C:\Windows`, and npm then dies with `ENOENT: C:\Windows\package.json`. So `npm`/`npx` cannot be run from the Windows side at all.
 - **`node` is not on `PATH` in a non-interactive WSL shell.** It is nvm-managed and `~/.bashrc` returns early when non-interactive, so `bash -lc` alone does not find it.
 
-Run every npm/node command through WSL with the working directory and `PATH` both set explicitly:
+- **A bare `npm` inside WSL is the *Windows* npm.** `/mnt/c/Program Files/nodejs` is on the inherited `PATH`, so `command -v npm` resolves there while `node` is missing entirely. The nvm bin directory has to come first.
+
+Run npm/node commands through WSL, putting the nvm node ahead of everything else:
 
 ```bash
-wsl.exe -d Ubuntu --cd /home/nigsib/projects/website -- bash -lc 'export PATH="$HOME/.nvm/versions/node/v22.13.0/bin:$PATH"; npm run build'
+wsl.exe -d Ubuntu -- bash -lc 'export PATH="$(ls -d $HOME/.nvm/versions/node/*/bin | sort -V | tail -1):$PATH"; npm run build'
 ```
 
-`.claude/launch.json` uses exactly this form to start the dev server (on port 3001, since 3000 is often taken by another project). Note it pins the node version in that path — bump it after an nvm upgrade.
+No `--cd` is needed — `wsl.exe` inherits the caller's working directory and translates it (`--cd .` is rejected as an invalid argument). The `ls | sort -V | tail -1` glob picks the highest installed node rather than pinning a version, so an nvm upgrade does not break it. [.claude/launch.json](.claude/launch.json) uses exactly this form to start the dev server, on port 3001 since 3000 is often taken by another project.
 
-When invoking `wsl.exe` from Git Bash, prefix with `MSYS_NO_PATHCONV=1`, or the Linux paths get rewritten into Windows ones.
+Two quoting traps when driving `wsl.exe`:
+
+- From Git Bash, prefix with `MSYS_NO_PATHCONV=1` or the Linux paths get rewritten into Windows ones.
+- Git Bash also mangles nested double quotes inside `bash -c '...'`, so a `"$(... "$HOME" ...)"` substitution silently comes back empty. Keep inner variables unquoted, or write the script to a file and run that. The launcher itself passes argv straight through and is unaffected.
 
 `git` run from Windows rejects the path with "dubious ownership". Either fix it once:
 
