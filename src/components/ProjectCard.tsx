@@ -50,27 +50,16 @@ export function ProjectCard({ project, screenshotPath, compact = false }: Projec
           onError={() => setImageSrc(placeholderSrc)}
           sizes="(max-width: 768px) 100vw, 50vw"
         />
-        {isArchived ? (
-          <Link
-            href={caseStudyHref(project)}
-            aria-label={`View the ${project.title} case study`}
-            className={overlayClass}
-            style={compact ? { color: "#ffffff" } : undefined}
-          >
-            VIEW PROJECT
-          </Link>
-        ) : (
-          <a
-            href={project.url}
-            target="_blank"
-            rel="noreferrer"
-            aria-label={`Launch ${project.title}`}
-            className={overlayClass}
-            style={compact ? { color: "#ffffff" } : undefined}
-          >
-            LAUNCH SITE
-          </a>
-        )}
+        {/* The thumbnail always goes to the case study. Reaching the live site
+            is the job of the button below, so the two never compete. */}
+        <Link
+          href={caseStudyHref(project)}
+          aria-label={`View the ${project.title} case study`}
+          className={overlayClass}
+          style={compact ? { color: "#ffffff" } : undefined}
+        >
+          VIEW PROJECT
+        </Link>
       </div>
       <div className={bodyClass}>
         <p className="text-[10px] tracking-[0.3em] text-white/70">{project.category.toUpperCase()}</p>
