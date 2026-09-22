@@ -67,7 +67,7 @@ Each `WorkItem` carries `source: "pdf" | "live" | "archived"`, which drives both
 
 **Dead client sites** are marked `archived: true` in `projects.ts`, which cascades: the derived work item drops its `url` and becomes `source: "archived"`, the homepage card swaps its outbound link for a "VIEW PROJECT" link through to `/work/web-interactive#<slugified-title>`, and `capture-screenshots.ts` skips the project so its last good screenshot is never overwritten with a placeholder. `slideshowImages[0]` is both the card thumbnail and the first slide, so the site screenshot belongs at index 0. As of August 2026 this covers WRA Official (DNS failing) and KDC Exclusive (domain lapsed, NXDOMAIN); neither has any usable Wayback capture, so their case-study imagery came from local PSDs.
 
-Archive imagery under `public/portfolio-pdf/` is generated from `pdf_portfolio_1920x1080_04_150dpi.pdf` (gitignored, ~40MB, kept locally) by `scripts/extract-pdf-pages.mjs`; the page numbers to render are hardcoded in `selectedPages`.
+Archive imagery under `public/portfolio-pdf/` is generated from `pdf_portfolio_1920x1080_04_150dpi.pdf` (gitignored, ~40MB, kept locally) by `scripts/extract-pdf-pages.mjs`; the page numbers to render are hardcoded in `selectedPages`. Every content page in that PDF carries a personal contact line (name, phone, email) bottom-left, which the script paints out at render time — it checks the margins above and below are blank first, so the full-bleed cover is left alone rather than being hardcoded as an exception. The `© 2019 Nigel Burt` notice bottom-right is deliberately kept.
 
 ## Routing and layout
 
