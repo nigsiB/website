@@ -79,8 +79,8 @@ export const workSections: Record<WorkSectionKey, WorkSection> = {
           "/EDN/dark/home_02-2.jpg",
           "/EDN/dark/home_03-2.jpg",
         ],
-        source: "live",
-        url: "https://ednmanagement.com",
+        // Domain lapsed (NXDOMAIN as of September 2026), so no outbound link.
+        source: "archived",
       },
       {
         title: "Brand Design: Client (Various)",
@@ -136,8 +136,8 @@ export const workSections: Record<WorkSectionKey, WorkSection> = {
           "/EDN/dark/home_02-2.jpg",
           "/EDN/dark/home_03-2.jpg",
         ],
-        source: "live",
-        url: "https://ednmanagement.com",
+        // Domain lapsed (NXDOMAIN as of September 2026), so no outbound link.
+        source: "archived",
       },
       {
         title: "Panasonic VS3 Pan-European Launch",
