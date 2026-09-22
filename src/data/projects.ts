@@ -20,6 +20,14 @@ export type PortfolioProject = {
 
 export const projects: PortfolioProject[] = [
   {
+    url: "https://www.therichreportercomps.com",
+    title: "The Rich Reporter Comps",
+    description: "Members-only prize competition platform with capped draws, live countdowns, and published winners.",
+    category: "Competitions",
+    device: "desktop",
+    latest: true,
+  },
+  {
     url: "https://www.medellin-tour.com",
     title: "Tour de La Paz",
     description: "Luxury Medellin travel experience rooted in education and impact.",
@@ -33,7 +41,6 @@ export const projects: PortfolioProject[] = [
     description: "Personal platform centered on speaking, advocacy, and media.",
     category: "Personal Brand",
     device: "desktop",
-    latest: true,
     archived: true,
     slideshowImages: [
       // Index 0 is the card thumbnail as well as the first slide - keep the
